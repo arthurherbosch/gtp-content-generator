@@ -63,6 +63,7 @@ if check_password():
 
     if st.button("Send", key="send"):
         with st.spinner("Let me do my thing"):
+            st.session_state["messages"] += [{"role": "user", "content": prompt}]
             response = openai_call()
             print(response)
             message_response = response["choices"][0]["message"]["content"]
