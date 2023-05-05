@@ -14,7 +14,7 @@ openai.organization = st.secrets["ORGID"]
 
 def openai_call():
     response = openai.ChatCompletion.create(
-    model="gpt-4",
+    model="gpt-3.5-turbo",
     messages=[
         {"role": "system", "content": "You are an intelligent writer that writes video scripts for short videos."},
         {"role": "user", "content": "Brief: A 60-second video about CCUS and how it will help the energy transition? "},
