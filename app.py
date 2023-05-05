@@ -18,7 +18,7 @@ openai.organization = st.secrets["ORGID"]
 
 def openai_call(prompt):
     response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
+    model="gpt-4",
     messages= prompt
     )
     return response
