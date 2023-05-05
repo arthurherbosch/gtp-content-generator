@@ -63,8 +63,14 @@ if check_password():
 
     if st.button("Send", key="send"):
         with st.spinner("Let me do my thing"):
-            st.session_state["messages"] += [{"role": "user", "content": prompt}]
             response = openai_call()
+            print(response)
             message_response = response["choices"][0]["message"]["content"]
             st.session_state["messages"] += [{"role": "assistant", "content": message_response}]
  
+
+    for i in range(len(st.session_state["messages"])-1,-1,-1):
+        if st.session_state["messages"][i]['role'] == 'user':
+            message(st.session_state["messages"][i]['content'], is_user=True)
+        if st.session_state["messages"][i]['role'] == 'assistant':
+            message(st.session_state["messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
