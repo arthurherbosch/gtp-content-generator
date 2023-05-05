@@ -19,13 +19,7 @@ openai.organization = st.secrets["ORGID"]
 def openai_call(prompt):
     response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are an intelligent writer that writes video scripts for short videos."},
-        {"role": "user", "content": "Can you write a video script for a 60-second video about CCUS and how it will help the energy transition? "},
-        {"role": "assistant",  "content": "Frame 1: CCUS is a key weapon in the fight against climate change. \n Frame 2: CCUS describes a wide range of technologies that can help us tackle CO2 emissions. \n Frame 3: How does it work? Carbon,   Utilization,  Capture , Storage \n Frame 4: 1.Capture \n Frame 5: CO2 from industry is captured and prevented from entering the atmosphere. \n Frame 6: This is done in power plants and other large-scale industries such as steel mills. \n Frame 7: CO2 is separated from other gases – or even captured from the air using giant fans. \n Frame 8: 2. Utilization. \n Frame 9: After capture, CO2 can be reused – to make fuel, cement, plastics... \n Frame 10: Or even as bubbles in fizzy drinks. \n Frame 11: 3. Storage. \n Frame 12: CO2 can also be injected deep into the ground into porous rock formations – it fills the gaps. \n Frame 13: The same way oils and gases have been trapped underground for millennia. \n Frame 14: Carbon capture innovation can help us speed up on the road to net-zero."},
-        prompt
-
-        ],
+    messages= prompt
     )
     return response
 
@@ -58,10 +52,14 @@ def check_password():
 if check_password():
     st.title("Intelligent writer for scripts and articles ")
 
-    BASE_PROMPT = [ {"role": "assistant", "content": "Can I help you to create another script? "}]
+    BASE_PROMPT = [ 
+        {"role": "system", "content": "You are an intelligent writer that writes video scripts for short videos."},
+        {"role": "user", "content": "Can you write a video script for a 60-second video about CCUS and how it will help the energy transition? "},
+        {"role": "assistant",  "content": "Frame 1: CCUS is a key weapon in the fight against climate change. \n Frame 2: CCUS describes a wide range of technologies that can help us tackle CO2 emissions. \n Frame 3: How does it work? Carbon,   Utilization,  Capture , Storage \n Frame 4: 1.Capture \n Frame 5: CO2 from industry is captured and prevented from entering the atmosphere. \n Frame 6: This is done in power plants and other large-scale industries such as steel mills. \n Frame 7: CO2 is separated from other gases – or even captured from the air using giant fans. \n Frame 8: 2. Utilization. \n Frame 9: After capture, CO2 can be reused – to make fuel, cement, plastics... \n Frame 10: Or even as bubbles in fizzy drinks. \n Frame 11: 3. Storage. \n Frame 12: CO2 can also be injected deep into the ground into porous rock formations – it fills the gaps. \n Frame 13: The same way oils and gases have been trapped underground for millennia. \n Frame 14: Carbon capture innovation can help us speed up on the road to net-zero."},
+        ]
 
     if "messages" not in st.session_state:
-        st.session_state["messages"] = []
+        st.session_state["messages"] = BASE_PROMPT
 
     prompt = st.text_area("Prompt", placeholder="Give me the brief baby")
 
@@ -69,7 +67,6 @@ if check_password():
         with st.spinner("Let me do my thing"):
             st.session_state["messages"] += [{"role": "user", "content": prompt}]
             response = openai_call(st.session_state["messages"])
-            print(response)
             message_response = response["choices"][0]["message"]["content"]
             st.session_state["messages"] += [{"role": "assistant", "content": message_response}]
  
