@@ -60,7 +60,7 @@ if check_password():
     BASE_PROMPT = [ {"role": "assistant", "content": "Can I help you to create another script? "}]
 
     if "messages" not in st.session_state:
-        st.session_state["messages"] = ''
+        st.session_state["messages"] = []
 
     prompt = st.text_area("Prompt", placeholder="Give me the brief baby")
 
