@@ -103,7 +103,7 @@ if check_password():
         {"role": "user", "content": "I want you to writes articles on certain topics. We want our acrticles to be in a certain style, so I will provide some examples. You can use those examples to create similar articles."},
     ]
 
-    if "messages" not in st.session_state:
+    if "script_messages" or "article_messages" not in st.session_state:
         if type == 'Video Script':
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
         elif  type == 'Article':
