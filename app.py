@@ -266,13 +266,15 @@ if check_password():
             
     ]
 
-    if "script_messages" or "article_messages" not in st.session_state:
+    if  "article_messages" not in st.session_state:
+        if  type == 'Article':
+            st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
+      
+          
+    if "script_messages"  not in st.session_state:
         if type == 'Video Script':
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-        elif  type == 'Article':
-            st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
-        else:
-            st.write('Make a choice between article or video script')
+    
 
     prompt = st.text_area("Prompt", placeholder="Give me the brief baby")
 
