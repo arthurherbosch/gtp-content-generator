@@ -99,8 +99,95 @@ if check_password():
         ]
     
     BASE_PROMPT_ARTICLES = [
-          {"role": "system", "content": "Intelligent writer that writes articles in a particular style"},
+        {"role": "system", "content": "Intelligent writer that writes articles in a particular style"},
         {"role": "user", "content": "I want you to writes articles on certain topics. We want our acrticles to be in a certain style, so I will provide some examples. You can use those examples to create similar articles."},
+        {"role": "assistant", "content": "Okay, can you provide me with a brief so that I can create an article. "},
+        {"role": "user", "content": """"Create an article with around 600 words that will highlight why burning low-carbon fuels (rather than no-carbon fuels) will be essential in achieving a secure, stable energy transition — and outline why electrification / renewables can't be the entire solution to net-zero in the near future. It will explain why the energy transition isn't a cliff-edge where sectors will convert immediately from high-carbon to no-carbon, but instead can use complementary low-carbon solutions as part of the journey.
+        THis is the structure of the article.
+        Intro: From where we are today and net zero, there will be a transitional period where hybrid, low carbon fuels and gases will increasingly dominate certain sectors, especially those that are hard to electrify. 
+
+        Examples: 
+
+        1. Transport. Transportation accounts for ~16% of global CO2 emissions, and carbon-positive solutions in the sector are therefore critical for global decarbonization. Low-carbon solutions will be especially needed in the transportation for hard-to-convert sectors where electrification is not an easy immediate prospect — for example shipping and aviation.  Early adopters will have both financial and regulatory incentives to move early.
+
+        Examples of low-carbon transport fuel include:
+        — blue hydrogen (made from natural gas)
+        — biofuels
+
+        https://www.bcg.com/publications/2022/the-road-ahead-for-low-carbon-fuels
+        https://www.bcg.com/publications/2021/global-zero-carbon-shipping-transformation-challenge
+
+        2. Power. There are many innovative and positive low-carbon solutions for the power. Wind and Solar PV are variable. For example, "the possibility to combust high shares of low-carbon hydrogen and ammonia in fossil fuel power plants provides countries with an additional tool for decarbonising the power sector." (IEA) https://www.iea.org/reports/the-role-of-low-carbon-fuels-in-the-clean-energy-transitions-of-the-power-sector
+
+        3. Other relevant examples of sectors where low-carbon is a positive and necessary solution. 
+
+         """},
+        {"role": "assistant", "content": """The long road to net zero 
+
+        There is a gulf between where the world is today and where it needs to be to hit net zero by 2050. Carbon-intensive coal, which is still the leading source of energy, is releasing record levels of carbon dioxide and renewable sources still only produce a relatively small proportion of our energy needs. 
+
+        The coming decades represent a transitional period, as renewable energy solutions are scaled up to displace fossil fuel consumption. During this transition, there is ample opportunity to increase energy stability by replacing the most carbon-intensive fuels with lower- and low-carbon fuels until alternatives can fulfil all our energy needs. 
+
+        Making the switch to lower-carbon power generation has already produced results in some countries. In the US, CO2 emissions from generating electricity fell by 32% between 2005 and 2019, largely the result of a shift from coal to natural gas, which produces significantly less carbon dioxide.  In the coming years, there is an opportunity to go further by introducing low-carbon fuels in multiple sectors, especially those that are challenging to electrify. Some of these fuels are available already, including sustainable aviation fuels and biofuels for transportation, while others are being developed. These include lower-carbon hydrogen (produced from natural gas and supported by carbon capture, utilization and storage), and hydrogen produced from renewable energy. 
+
+        Renewables rising 
+
+        The transition to net zero presents a vast challenge that will be tackled in diverse ways by different countries. The pathways are complicated by ever-growing demand for electricity and will be influenced by geopolitics along the way. Ensuring a just and orderly transition means that – for all the urgency of climate change – it is impossible to displace fossil fuels overnight. Not only do renewables provide just 29 percent of our electricity needs globally, but the fastest-growing renewables, wind and solar, require technologies like grid-scale energy storage to manage intermittency – and some industries’ needs can only be met by fossil fuels at present. 
+
+        Steelmaking, for example, is considered a hard-to-abate sector due to the extremely high temperatures necessary that can only be reached by burning fuel. However, analyses suggest that the industry could reach net zero by 2050 with a combination of carbon capture, low-carbon fuels and more efficient steel use. In the short- to medium-term, low-carbon fuels present our best opportunity to press ahead with decarbonizing such hard-to-abate industries. 
+
+        Complementary fuels 
+
+        Switching to lower-carbon fuels is among the most economically, politically, and technologically feasible approaches to slowing carbon emissions. It offers a lower-carbon future for newly built infrastructure in East and Southeast Asia, which could otherwise become stranded assets with serious socio-economic consequences.  
+
+        According to the IEA, co-firing of ammonia and hydrogen has been successfully demonstrated at power plants. Increased use of low-carbon fuels in the power sector could help establish supply chains and drive down costs, encouraging uptake in other sectors. 
+
+        Transport – which accounts for one fifth (21%) of global CO2 emissions – is another sector well-positioned for fuel-switching. While full electrification is the ultimate goal for transport, this is not feasible in the short-term, particularly in countries that struggle to produce enough electricity and for long-distance journeys and heavy vehicles (e.g.: ships, aircraft, and trucks) that require fuels with high energy density. Vehicles of all types, however, can run on lower-carbon fuels such as biofuels, compressed natural gas, and liquid natural gas (either on their own or blended with fossil fuels) with minimal adjustments. Natural gas can emit 25 percent less carbon per unit of energy compared with conventional gasoline. 
+
+        Despite the relative ease with which the switch to lower-carbon fuels can be made, this opportunity remains largely unseized. Encouraging a switch to these fuels, which are a more expensive option, is likely to require government interventions in the short- to medium-term. 
+
+        The road to net zero is long and scattered with obstacles. For many sectors, switching to low-carbon fuels can provide the stable, progressive transition to lower emissions that the world needs. 
+
+        """},
+        {"role": "user", "content": """"Around 30% of global energy is consumed in the agricultural and food sector. 
+
+        Create an article with around 600-words articleabout how fossil fuels are used directly and indirectly in food production, with a focus on fertilizer.
+
+        - Nitrogen-based fertilizer (made using the Haber-Bosch process) consumes 1% of the world's energy supply in the form of natural gas. This production is directly responsible for sustaining 40% of the Earth's population. 
+        - Nitrogen-based fertilizer production went from around 4 million tons in the 1950s to 100 million tons a year today. 
+
+        Use article to highlight unexpected areas of living that rely on fossil fuel production, finishing on how we can factor this in to the energy transition. 
+        - More fuel efficient engines 
+        - Use of compost and precision fertilizers etc. see link https://news.un.org/en/story/2011/11/396792-un-urges-food-sector-reduce-fossil-fuel-use-and-shift-energy-smart-agriculture#:~:text=Steps%20that%20can%20be%20taken,crop%20varieties%20and%20animal%20breeds. 
+        """},
+        {"role": "assistant", "content": """
+        When we talk about the challenge of decarbonization, we tend to think of electricity production – but there are other fossil fuel-dependent industries that are just as essential to everyday life. In fact, around 30 percent of global energy is consumed by the agricultural and food sector.  
+
+        A report from UN Food and Agriculture Organization experts found that food systems emitted 18Gt of CO2 equivalent in 2015 – 34 percent of overall emissions – and these emissions are continuing to grow. 
+
+        The cost of crop production 
+
+        The rise of ammonia-based fertilizers has hugely boosted crop production, doubling the number of people that a unit of land can feed and sustaining the growing global population. 
+
+        However, producing ammonia is an energy-intensive process that uses fossil fuels, both as the source of hydrogen and as an energy source. Commercial ammonia production accounts for almost two percent of global energy consumption.  Although it is possible to produce ‘green ammonia’ from water and renewable energy, in practice almost all ammonia is derived from fossil fuels. 
+
+        Carbon-intensive value chains 
+
+        Fertilizer production is just one of the many ways in which food production contributes to greenhouse gas emissions. 
+
+        For instance, research published in Science estimated that livestock and fisheries account for 31 percent of food-related emissions, land use (mainly the conversion of forests and other ‘carbon sinks’ into cropland or pasture) for 24 percent, and supply chains for 18 per cent. Small but significant contributions came from packaging, transportation and refrigeration. 
+
+        Cutting emissions, then, is no straightforward task – particularly while food demand continues to grow. The reality is there is no silver bullet. A combination of approaches is needed to tackle the many sources of emissions: changes to land use, shifts in consumer behavior, shortened supply chains, efficiency measures, and alternatives to fertilizers made with fossil fuels. 
+
+        Food that doesn’t cost the earth 
+
+        Green ammonia could play a significant role in reducing use of fossil fuels in food production. With the cost of renewables falling compared with fossil fuels, green ammonia is inching closer to commercial viability. Several large ammonia producers have announced projects to produce green ammonia, including Yara, which is carrying out pilot projects in Norway, the Netherlands and Australia. 
+
+        In the meantime, there could be ways to reduce fertilizer use. In fact, it has been pointed out that many policies and regulations inadvertently encourage excessive fertilizer use. The European Commission is working to increase the sustainability of food systems, with an aim of cutting fertilizer use by a fifth by 2030. This could be considered a first step towards ‘precision agriculture’, in which data is used to inform how to use fertilizer, fuel and other resources more effectively, reducing waste, costs and emissions.  
+
+        The energy transition is not just about electricity and heating – fossil fuels are used in the production of all sorts of indispensable resources. Rising to the climate challenge calls for changes to how we produce, process, and consume food. 
+        """}
+
     ]
 
     if "script_messages" or "article_messages" not in st.session_state:
