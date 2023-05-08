@@ -115,14 +115,26 @@ if check_password():
 
     if st.button("Send", key="send"):
         with st.spinner("Let me do my thing"):
-            st.session_state["messages"] += [{"role": "user", "content": prompt}]
-            response = openai_call(st.session_state["messages"])
-            message_response = response["choices"][0]["message"]["content"]
-            st.session_state["messages"] += [{"role": "assistant", "content": message_response}]
- 
-
-    for i in range(len(st.session_state["messages"])-1,-1,-1):
-        if st.session_state["messages"][i]['role'] == 'user':
-            message(st.session_state["messages"][i]['content'], is_user=True)
-        if st.session_state["messages"][i]['role'] == 'assistant':
-            message(st.session_state["messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+            if type == 'Video Script':
+                st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
+                response = openai_call(st.session_state["script_messages"])
+                message_response = response["choices"][0]["script_messages"]["content"]
+                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
+            elif type == 'Article':
+                st.session_state["article_messages"] += [{"role": "user", "content": prompt}]
+                response = openai_call(st.session_state["article_messages"])
+                message_response = response["choices"][0]["article_messages"]["content"]
+                st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
+    
+    if type == 'Video Script':
+        for i in range(len(st.session_state["script_messages"])-1,-1,-1):
+            if st.session_state["script_messages"][i]['role'] == 'user':
+                message(st.session_state["script_messages"][i]['content'], is_user=True)
+            if st.session_state["script_messages"][i]['role'] == 'assistant':
+                message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+    elif type == 'Article':
+        for i in range(len(st.session_state["article_messages"])-1,-1,-1):
+            if st.session_state["article_messages"][i]['role'] == 'user':
+                message(st.session_state["article_messages"][i]['content'], is_user=True)
+            if st.session_state["article_messages"][i]['role'] == 'assistant':
+                message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
