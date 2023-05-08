@@ -118,12 +118,12 @@ if check_password():
             if type == 'Video Script':
                 st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
                 response = openai_call(st.session_state["script_messages"])
-                message_response = response["choices"][0]["script_messages"]["content"]
+                message_response = response["choices"][0]["messages"]["content"]
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
             elif type == 'Article':
                 st.session_state["article_messages"] += [{"role": "user", "content": prompt}]
                 response = openai_call(st.session_state["article_messages"])
-                message_response = response["choices"][0]["article_messages"]["content"]
+                message_response = response["choices"][0]["messages"]["content"]
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
     
     if type == 'Video Script':
