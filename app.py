@@ -186,8 +186,84 @@ if check_password():
         In the meantime, there could be ways to reduce fertilizer use. In fact, it has been pointed out that many policies and regulations inadvertently encourage excessive fertilizer use. The European Commission is working to increase the sustainability of food systems, with an aim of cutting fertilizer use by a fifth by 2030. This could be considered a first step towards ‘precision agriculture’, in which data is used to inform how to use fertilizer, fuel and other resources more effectively, reducing waste, costs and emissions.  
 
         The energy transition is not just about electricity and heating – fossil fuels are used in the production of all sorts of indispensable resources. Rising to the climate challenge calls for changes to how we produce, process, and consume food. 
-        """}
+        """},
+         {"role": "user", "content": """" In the run up to the circular carbon economy round table in February (details of the event in the assets tab - don't need to mention the event in the article, just has useful copy), produce a 600-word article (US spelling) putting CCUS in context - what's happened so far, what can we learn, what are the biggest roadblocks (is it R&D, investment, getting projects off the ground?)
 
+        There was a lot of interest in CCUS in the noughties, but the potential was never realised. With organizations like the IPCC highlighting the importance of CCUS, how can we ensure we build and maintain momentum? 
+
+        Use examples of what's happening: 
+        - Industrial hubs 
+        - US Inflation Reduction Act 
+        - EU's upcoming strategic vision for CCUS technologies 
+
+        Info on CCUS (can link to these articles rather than covering a lot of the same ground) 
+        https://www.ief.org/news/critical-role-for-ccus-highlighted-in-latest-ipcc-report-whats-next 
+        https://www.ief.org/news/major-investors-back-direct-air-capture-co2-technology 
+        https://www.ief.org/news/caverns-concrete-and-carbonate-the-future-of-storing-captured-carbon 
+        https://www.ief.org/news/oceans-offer-tantalizing-carbon-capture-potential-will-it-be-realized 
+        https://www.ief.org/news/whats-the-target-for-carbon-sequestration-and-how-do-we-get-there 
+
+        Info on history of CCUS (more desk research needed): 
+        https://www.iea.org/reports/about-ccus 
+        https://www.iea.org/commentaries/carbon-capture-in-2021-off-and-running-or-another-false-start 
+
+        """},
+           {"role": "assistant", "content": """
+        Increasing the scale of carbon capture utilization and storage (CCUS) technology is essential if we are to keep global warming to within 2°C. However, despite the technology having been around for several decades, its potential has yet to be fully realized.  
+
+        Significant investment is required to scale up deployment of CCUS technology if we are to reach net-zero targets, potentially amounting to trillions of dollars. Despite these challenges, there is renewed momentum around CCUS projects. 
+
+        [Embed this carousel: https://twitter.com/IEF_Dialogue/status/1596061135828049922]  
+        
+        From stagnation to renewed energy 
+        
+        Following early growth in the 1980s, interest in CCUS as a way to reduce greenhouse gas emissions and combat climate change peaked during the 2000s. However, by 2010, only slightly more than 15 MtCO2 was being captured, and the following decade saw the mass cancellation of CCUS project plans.    
+        
+        One of the biggest roadblocks was the lack of investment and political will to support the development and deployment of the technology. Less than 0.5% of clean energy and efficiency technologies investments go towards CCUS, according to the IEA, and a lack of policy support negatively impacts the commercial appeal of CCUS.
+        
+        Today, the situation is changing, with several factors driving this new momentum, including the 2023 UN Intergovernmental Panel on Climate Change (IPCC) report, which said carbon capture could be necessary to reach net-zero goals, especially in hard-to-abate industries. 
+
+        Policy changes and strategic vision drive CCUS investment impetus 
+        
+        Part of this impetus is due to policy changes that favor climate mitigation technologies, with the United States and Europe leading the way. A section of the US tax code, 45Q, provides a tax credit for carbon sequestration. This is designed to incentivize a variety of projects under CCUS. The expansion of 45Q  in 2018 kickstarted renewed interest in CCUS and in 2021 more than 100 new CCUS facilities were announced around the world. In 2022, the US Inflation Reduction Act further expanded and extended the 45Q tax credit by increasing the credit amount and lowering the CO2 capture capacity bar for eligibility, which is expected to act as a stimulus for investment in CCUS projects. 
+
+        The EU has also announced an upcoming strategic vision for CCUS technologies. The plan includes a €3 billion package for investment in CCUS innovation and development and the creation of an EU-wide carbon storage infrastructure. Member states are increasing their own support, with Denmark allocating €5 billion euro to CCUS projects.  
+
+        Elon Musk’s launch of the $100M XPRIZE for carbon removal in January 2021 shows that private investment can also be an important factor in driving CCUS development.  
+
+        Innovation drives new technologies for load sharing, storage and use 
+
+        One of the most promising opportunities is the creation of industrial ‘hubs’, which capture CO2 from associated facilities, sharing CO2 transport and storage infrastructure. Examples include the Alberta Carbon Trunk Line and Norway’s Longship Project, which includes the Northern Lights offshore storage hub.  
+        
+        Innovative new approaches to carbon capture and storage are opening up further avenues for CCUS and creating potential for a circular carbon economy. These include direct air capture (DAC) of CO2, the potential for ocean carbon capture as well as the production of carbon-negative concrete. Nature-based solutions, such as afforestation and restorative or regenerative farming, are also gaining traction as an essential part of carbon management.  
+
+        [Embed CCUS video: https://www.youtube.com/watch?v=1b6r2H7jtKc]  
+
+        
+        De-risking CCUS investment 
+
+        Despite these developments, there are still many challenges to be overcome if CCUS is to be scaled up “from the mega to the giga” to reach 5.6 Gt CO2 capacity by 2050 to meet Paris goals.  
+
+        The cost of the technology remains extremely high. Energy penalties also pose a barrier, along with the lack of regulatory frameworks in place to support the widespread development and deployment of CCUS. 
+
+        There are concerns about the safety of storing CO2 underground and some critics view CCUS as a vehicle for prolonging the role of fossil fuels in the global economy, as opposed to a clean energy technology. 
+
+        However, these challenges are not insurmountable. To de-risk CCUS investment, there are several ways to increase investor confidence: 
+
+        Developing a clear and consistent regulatory framework across countries and enforcing regulations that address CCUS liability issues 
+
+        Creating a stable and predictable market for CCUS technology that aligns with Environmental, Social and Governance (ESG) standards  
+
+        Ramping up research and development to reduce the cost of CCUS technology 
+
+        Widening public awareness 
+
+        Exploring new financing models such as creative incentivization programs, public-private partnerships and green bonds, to increase access to capital markets for CCUS projects 
+
+        Creating network synergies with hydrogen infrastructure to make CCUS projects more cost-effective 
+
+        With the right support and investment, CCUS technology will become a more attractive investment opportunity, accelerating the transition to a low-carbon economy as an important tool in the fight against climate change. """},
+            
     ]
 
     if "script_messages" or "article_messages" not in st.session_state:
