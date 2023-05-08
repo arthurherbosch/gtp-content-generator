@@ -50,7 +50,7 @@ def check_password():
         
 
 if check_password():
-    st.title("Intelligent writer for scripts and articles ")
+    st.title("Content Engine Digital Writer V1")
     type = st.radio(
     "What do you want to create?",
     ('Video Script', 'Article'))
@@ -275,11 +275,11 @@ if check_password():
         if type == 'Video Script':
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     
-
-    prompt = st.text_area("Prompt", placeholder="Give me the brief baby")
+   
+    prompt = st.text_area("Prompt", placeholder="Put your brief here")
 
     if st.button("Send", key="send"):
-        with st.spinner("Let me do my thing"):
+        with st.spinner("Let me do my thing..."):
             if type == 'Video Script':
                 st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
                 response = openai_call(st.session_state["script_messages"])
