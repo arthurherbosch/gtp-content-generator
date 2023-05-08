@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_chat import message
 import openai
+import streamlit as st
 
 #hide_menu_style = """
 #        <style>
@@ -54,6 +55,24 @@ if check_password():
     type = st.radio(
     "What do you want to create?",
     ('Video Script', 'Article'))
+
+    if type == 'Video Script':
+        video_len = st.slider('How long should the video be?', 0, 180, 60)
+        st.write("Video has to be around ", video_len, 'seconds')
+        platform = st.multiselect(
+        'For which platform is the video?',
+        ['LinkedIn', 'Instagram', 'Facebook', 'Twitter'])
+        st.write('You selected:', platform)
+
+        type_vid = st.selectbox(
+        'What type of video?',
+        ('Hype video', 'Inforgraphic', 'Animation'))
+
+        st.write('You selected:', type_vid)
+
+    if type == 'Article':
+        words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600)
+        st.write("Article will be around ", words, 'words')
 
     BASE_PROMPT_VIDEO = [ 
         {"role": "system", "content": "Intelligent writer that writes video scripts based of a brief for short videos in a certain style"},
