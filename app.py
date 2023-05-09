@@ -74,7 +74,6 @@ if check_password():
 
 
     brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
-    goal = st.text_area("Goal", placeholder = "What is the goal of the post eg. ")
     end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief}"
     
     BASE_PROMPT_VIDEO = [ 
@@ -318,9 +317,14 @@ if check_password():
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
             if st.session_state["script_messages"][i]['role'] == 'assistant':
                 message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+                
+
+
     elif type == 'Article':
         for i in range(len(st.session_state["article_messages"])-1,-1,-1):
             if st.session_state["article_messages"][i]['role'] == 'user':
                 message(st.session_state["article_messages"][i]['content'], is_user=True)
             if st.session_state["article_messages"][i]['role'] == 'assistant':
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+    goal = st.text_area("Make adjustments", placeholder = "What is the goal of the post eg. ")
+    st.button("Send", key="send")
