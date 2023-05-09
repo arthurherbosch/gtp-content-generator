@@ -59,7 +59,7 @@ if check_password():
     video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
 
     if type == 'Video Script':
-        video_len = st.slider('How long should the video be?', 0, 180, 60)
+        video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
         platform = st.multiselect(
         'For which platform is the video?',
