@@ -73,6 +73,8 @@ if check_password():
     if type == 'Article':
         words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600)
         st.write("Article will be around ", words, 'words')
+        
+    st.divider()
 
     st.markdown('Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. **The better the brief, the better the script**')
 
