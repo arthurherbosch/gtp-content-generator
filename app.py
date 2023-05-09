@@ -317,7 +317,14 @@ if check_password():
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
             if st.session_state["script_messages"][i]['role'] == 'assistant':
                 message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-        st.button("Change", key="change")
+        prompt = st.text_area("Make adjustments", placeholder = "Can you focus more on ...")
+
+        if st.button("Change", key="change"):
+            with st.spinner("Let me make some adjustments..."):
+                st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
+                response = openai_call(st.session_state["script_messages"])
+                message_response = response["choices"][0]["message"]["content"]
+                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
                 
 
 
@@ -327,5 +334,4 @@ if check_password():
                 message(st.session_state["article_messages"][i]['content'], is_user=True)
             if st.session_state["article_messages"][i]['role'] == 'assistant':
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-    goal = st.text_area("Make adjustments", placeholder = "What is the goal of the post eg. ")
     
