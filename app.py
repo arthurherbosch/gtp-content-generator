@@ -285,7 +285,7 @@ if check_password():
         With the right support and investment, CCUS technology will become a more attractive investment opportunity, accelerating the transition to a low-carbon economy as an important tool in the fight against climate change. """},
             
     ]
-
+#  
     if  "article_messages" not in st.session_state:
         if  type == 'Article':
             st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
