@@ -327,4 +327,4 @@ if check_password():
             if st.session_state["article_messages"][i]['role'] == 'assistant':
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
     goal = st.text_area("Make adjustments", placeholder = "What is the goal of the post eg. ")
-    st.button("Send", key="send")
+    st.button("Change", key="change")
