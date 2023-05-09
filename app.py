@@ -287,30 +287,23 @@ if check_password():
         With the right support and investment, CCUS technology will become a more attractive investment opportunity, accelerating the transition to a low-carbon economy as an important tool in the fight against climate change. """},
             
     ]
-#  
-    if  "article_messages" not in st.session_state:
-        if  type == 'Article':
-            st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
-      
-          
+
     if "script_messages"  not in st.session_state:
-        if type == 'Video Script':
-            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     
    
 
-    if st.button("Send"):
+    if st.button("Send", key ='send'):
         with st.spinner("Let me do my thing..."):
-            if type == 'Video Script':
-                st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
-                response = openai_call(st.session_state["script_messages"])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
-          
+            st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
+            response = openai_call(st.session_state["script_messages"])
+            message_response = response["choices"][0]["message"]["content"]
+            st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
+        
   
     prompt = st.text_area("Make adjustments", placeholder = "Can you focus more on ...")
 
-    if st.button("Change"):
+    if st.button("Change", key = 'change'):
         with st.spinner("Let me make some adjustments..."):
             st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
             response = openai_call(st.session_state["script_messages"])
