@@ -317,6 +317,7 @@ if check_password():
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
             if st.session_state["script_messages"][i]['role'] == 'assistant':
                 message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+        st.button("Change", key="change")
                 
 
 
@@ -327,4 +328,4 @@ if check_password():
             if st.session_state["article_messages"][i]['role'] == 'assistant':
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
     goal = st.text_area("Make adjustments", placeholder = "What is the goal of the post eg. ")
-    st.button("Change", key="change")
+    
