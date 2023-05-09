@@ -296,7 +296,7 @@ if check_password():
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     
    
-    prompt = st.text_area("Prompt", placeholder="Put your brief here")
+    prompt = st.text_area("Prompt", placeholder="Put your brief here...")
 
     if st.button("Send", key="send"):
         with st.spinner("Let me do my thing..."):
