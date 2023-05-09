@@ -316,7 +316,7 @@ if check_password():
                 response = openai_call(st.session_state["article_messages"])
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
-    reload_chat()
+  
     prompt = st.text_area("Make adjustments", placeholder = "Can you focus more on ...")
 
     if st.button("Change", key="change"):
