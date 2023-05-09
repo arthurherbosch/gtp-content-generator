@@ -301,19 +301,20 @@ if check_password():
             st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
         
   
-    prompt = st.text_area("Make adjustments", placeholder = "Can you focus more on ...")
-
-    for i in range(len(st.session_state["script_messages"])-1, 10, -1):
-        if st.session_state["script_messages"][i]['role'] == 'user':
-            message(st.session_state["script_messages"][i]['content'], is_user=True)
-        if st.session_state["script_messages"][i]['role'] == 'assistant':
-            message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-                
+    prompt = st.text_area("Make adjustments", placeholder = "Can you make the script shorter?")
+    
     if st.button("Change", key = 'change'):
         with st.spinner("Let me make some adjustments..."):
             st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
             response = openai_call(st.session_state["script_messages"])
             message_response = response["choices"][0]["message"]["content"]
             st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
+                
+
+    for i in range(len(st.session_state["script_messages"])-1, 10, -1):
+        if st.session_state["script_messages"][i]['role'] == 'user':
+            message(st.session_state["script_messages"][i]['content'], is_user=True)
+        if st.session_state["script_messages"][i]['role'] == 'assistant':
+            message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
                 
 
