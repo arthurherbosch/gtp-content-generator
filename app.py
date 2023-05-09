@@ -74,11 +74,9 @@ if check_password():
         words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600)
         st.write("Article will be around ", words, 'words')
         
-    st.divider()
 
-    st.markdown('Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. **The better the brief, the better the script**')
 
-    prompt = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ")
+    prompt = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. **The better the brief, the better the script**")
 
     BASE_PROMPT_VIDEO = [ 
         {"role": "system", "content": "Intelligent writer that writes video scripts based of a brief for short videos in a certain style"},
