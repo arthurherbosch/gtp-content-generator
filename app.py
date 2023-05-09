@@ -61,13 +61,10 @@ if check_password():
     if type == 'Video Script':
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
-        platform = st.multiselect(
-        'For which platform is the video?',
-        ['LinkedIn', 'Instagram', 'Facebook', 'Twitter'])
-
+    
         type_vid = st.selectbox(
         'What type of video?',
-        ('Hype video', 'Inforgraphic', 'Animation'))
+        ('hype video', 'infographic', 'animation'))
 
 
     if type == 'Article':
@@ -76,8 +73,9 @@ if check_password():
         
 
 
-    prompt = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. **The better the brief, the better the script**")
-
+    brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. **The better the brief, the better the script**")
+    end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n Topic: {video_title} \n Brief: {brief}"
+    
     BASE_PROMPT_VIDEO = [ 
         {"role": "system", "content": "Intelligent writer that writes video scripts based of a brief for short videos in a certain style"},
         {"role": "user", "content": "I want you to create video scripts for short videos. We want our video scripts to be in a certain style, so I will provide some examples. You can use those examples to create similar scripts."},
@@ -303,12 +301,12 @@ if check_password():
     if st.button("Send", key="send"):
         with st.spinner("Let me do my thing..."):
             if type == 'Video Script':
-                st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
+                st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
                 response = openai_call(st.session_state["script_messages"])
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
             elif type == 'Article':
-                st.session_state["article_messages"] += [{"role": "user", "content": prompt}]
+                st.session_state["article_messages"] += [{"role": "user", "content": end_prompt}]
                 response = openai_call(st.session_state["article_messages"])
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
