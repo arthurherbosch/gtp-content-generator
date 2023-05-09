@@ -312,7 +312,7 @@ if check_password():
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
     
     if type == 'Video Script':
-        for i in range(5, len(st.session_state["script_messages"])-1,1):
+        for i in range(9, len(st.session_state["script_messages"])-1,1):
             if st.session_state["script_messages"][i]['role'] == 'user':
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
             if st.session_state["script_messages"][i]['role'] == 'assistant':
