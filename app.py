@@ -56,6 +56,7 @@ if check_password():
     "What do you want to create?",
     ('Video Script', 'Article'))
     
+    video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
 
     if type == 'Video Script':
         video_len = st.slider('How long should the video be?', 0, 180, 60)
@@ -63,17 +64,19 @@ if check_password():
         platform = st.multiselect(
         'For which platform is the video?',
         ['LinkedIn', 'Instagram', 'Facebook', 'Twitter'])
-        st.write('You selected:', platform)
 
         type_vid = st.selectbox(
         'What type of video?',
         ('Hype video', 'Inforgraphic', 'Animation'))
 
-        st.write('You selected:', type_vid)
 
     if type == 'Article':
         words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600)
         st.write("Article will be around ", words, 'words')
+
+    st.markdown('Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. **The better the brief, the better the script**')
+
+    prompt = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ")
 
     BASE_PROMPT_VIDEO = [ 
         {"role": "system", "content": "Intelligent writer that writes video scripts based of a brief for short videos in a certain style"},
@@ -296,7 +299,6 @@ if check_password():
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     
    
-    prompt = st.text_area("Prompt", placeholder="Put your brief here...")
 
     if st.button("Send", key="send"):
         with st.spinner("Let me do my thing..."):
