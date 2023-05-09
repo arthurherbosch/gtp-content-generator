@@ -299,22 +299,18 @@ if check_password():
     
    
 
-    if st.button("Send", key="send"):
+    if st.button("Send"):
         with st.spinner("Let me do my thing..."):
             if type == 'Video Script':
                 st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
                 response = openai_call(st.session_state["script_messages"])
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
-            elif type == 'Article':
-                st.session_state["article_messages"] += [{"role": "user", "content": end_prompt}]
-                response = openai_call(st.session_state["article_messages"])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
+          
   
     prompt = st.text_area("Make adjustments", placeholder = "Can you focus more on ...")
 
-    if st.button("Change", key="change"):
+    if st.button("Change"):
         with st.spinner("Let me make some adjustments..."):
             st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
             response = openai_call(st.session_state["script_messages"])
