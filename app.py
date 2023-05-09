@@ -24,13 +24,8 @@ def openai_call(prompt):
     )
     return response
 
-def reload_chat():
-    for i in range(len(st.session_state["script_messages"])-1, 10, -1):
-        if st.session_state["script_messages"][i]['role'] == 'user':
-            message(st.session_state["script_messages"][i]['content'], is_user=True)
-        if st.session_state["script_messages"][i]['role'] == 'assistant':
-            message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-                
+
+
 def check_password():
     def password_entered():
         """Check whether correct password entered by user"""
@@ -326,6 +321,11 @@ if check_password():
             message_response = response["choices"][0]["message"]["content"]
             st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
                 
-    reload_chat()
+    for i in range(len(st.session_state["script_messages"])-1, 10, -1):
+        if st.session_state["script_messages"][i]['role'] == 'user':
+            message(st.session_state["script_messages"][i]['content'], is_user=True)
+        if st.session_state["script_messages"][i]['role'] == 'assistant':
+            message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+                
 
 
