@@ -79,7 +79,7 @@ if check_password():
         end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief}"
     elif type == 'Article':
         brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
-        end_prompt = brief
+        end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
     
     BASE_PROMPT_VIDEO = [ 
         {"role": "system", "content": "Intelligent writer that writes video scripts based of a brief for short videos in a certain style"},
