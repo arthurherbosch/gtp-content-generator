@@ -248,7 +248,138 @@ Frame 13: McLaren Technology Centre, United Kingdom"""},
 
 
 
+ADECCO_ARTICLE = [
+    {"role": "system", "content": "Intelligent writer that writes articles in a particular style"},
+    {"role": "user", "content": "I want you to writes articles on certain topics. We want our acrticles to be in a certain style, so I will provide some examples. You can use those examples to create similar articles."},
+    {"role": "assistant", "content": "Okay, can you provide me with a brief so that I can create an article. "},
+    {"role": "user", "content": "Can you write a 600-word article. \n Topic: 5 things employers need to know about heatwaves \n Brief: Exploring how heatwaves are becoming more common, more intense and more dangerous, opening up the divides between those who can work in air conditioned offices and those who suffer outside or working from home in hot apartments. The article would break down the need for employers to comply with legislation as well as going above and beyond to support people, eg with budgets for fans for at home workers, flexible schedules to let people avoid peak temperatures."},
+    {"role": "assistant", "content": """
+     The recent heat waves across much of Europe have caused considerable disruption (https://www.theguardian.com/world/2022/jul/17/forest-fires-rage-across-europe-as-heatwave-sends-temperatures-soaring), not least to the workplace. As temperatures continue to rise, research (https://www.newscientist.com/article/2326163-every-heatwave-occurring-today-is-more-intense-due-to-climate-change/) suggests that these heat waves are going to increase in both frequency and severity. With this in mind, here are some tips to ensure that your workplace remains a safe and comfortable environment for your employees when the mercury rises.
 
+	1. Allow for flexibility
+Employers can take steps to ensure the safety and comfort of their workers by allowing for increased flexibility. Those working outside or in already warm places like kitchens and foundries are particularly at risk, so changing shift times to avoid the hottest periods of the day can provide a welcome respite from the heat. 
+
+Companies should also take into account the differing needs of a workforce, making sure that people with a disability or health condition (https://www.cipd.co.uk/about/media/press/110722-cipd-keeping-employees-cool-heatwave#gref), for example, feel safe, comfortable and supported in the working environment. (https://www.adeccogroup.com/future-of-work/latest-insights/disability-advocates-explain-what-truly-make-companies-inclusive/) 
+
+2. Ensure the workplace is as cool as possible
+A major UK insurance company (https://www.bloomberg.com/news/articles/2022-07-18/apartments-in-former-office-buildings-ill-suited-to-extreme-heat) recently warned that glass curtain walls and floor-to-ceiling windows, while popular for office buildings, are notably poor at keeping out heat, and can create kiln-like conditions. 
+
+It is vital to ensure that a place of work is comfortable enough for people to focus on the job at hand. Ensuring that air conditioning is installed and functioning is a great place to start, but other measures such as turning off heat-emitting appliances like printers and large screens can also reduce the temperature. 
+
+Employers could conduct a heat risk assessment to reflect on how safe and conducive their offices are. 
+
+3. Consider those working from home
+Check-in regularly with those working from home (https://www.adeccogroup.com/en-ch/future-of-work/insights/remote-work/) to ensure that they are coping. Many houses and apartments are ill-equipped to deal with the heat, so if possible try to make some funds available for employees to purchase or rent cooling measures like fans or air conditioning units. Something that is a relatively small financial cost for a business could make a huge difference when it comes to both wellbeing and productivity. 
+
+Those working from home should ultimately have the same level of provision and care as those working in the office. Staff shouldn't be coming in to the office just to get access to the air conditioning!
+
+4. Rethink your dress code
+Trade unions have recently been making headlines in light of the blistering heatwaves demanding more flexibility with regards to work attire. Why not anticipate the needs of staff and get ahead of their requests? If your industry requires a formal dress code then consider whether it would be possible to relax it when the temperature exceeds a certain level. Likewise, if uniform or protective equipment (https://www.theguardian.com/uk-news/2022/jul/17/working-in-a-heatwave-your-rights-in-the-uk-and-how-to-prepare) must be worn then think about the impact that this may have on an employee and consider whether alternatives are possible.
+
+5. Stay up to date on legislation
+Governments have varying legislation on working limits during extreme weather, so ensure that you are fully aware of any mandatory changes in hours or working provisions – and at which temperatures they apply. The recent heat wave has already brought about legislation changes, most notably in Madrid where unions demanded a maximum working temperature (https://www.lemonde.fr/en/environment/article/2022/07/25/trade-unions-call-for-maximum-working-temperature-cap-after-eu-heatwave-deaths_5991324_114.html) of 39C for manual street cleaners following the death of a worker.
+
+Many other jurisdictions across Europe are now expected to follow suit, however if you think the temperature or conditions may put your employees at risk (https://www.adeccogroup.com/future-of-work/latest-insights/the-dangerous-effects-of-overworking/) then do not wait for legislation to make alterations.
+"""},
+    {"role": "user", "content": "Can you write a 800-word article. \n Topic:What impact has remote work had on diversity?  \n Brief: Not researched properly yet, but there is an understood assumption that Diversity Officers are just taking positions that don't actually get the authority/power they need to properly do their job.  Here's a quick look at how we can make their lives easier so they can make others' working lives better.Facebook just released their diversity report: have some good data in there - by posting and hiring for work from home jobs they saw a jump in diversity hires (ethnicity, disability)\n\n Let's ask the question and make the answer based in data - LOTS OF DATA"},
+    {"role": "assistant", "content": """
+
+AT LAST - WORLDWIDE VALIDATION FOR THE CHIEF DIVERSITY OFFICER 
+
+Sometimes it takes a global pandemic to sort out a problem. Chief Diversity Officers (CDOs) around the planet might agree. 
+
+The diversity officer's raison d'être is to advance the core values of diversity and inclusion in their company. Seen for some years by cynics as little more than a box-ticking exercise, the often under-supported and misunderstood CDO now has a folder full of inspiring stats, thanks to the world-changing events of the past three years.
+
+Back in 2019 the career ladder was uneven, unstable and, for some, pretty much unscalable. Here in 2022, there's been at least some progress in making its rungs easier to grasp, allowing companies to reap the well-documented benefits of a more diverse workforce.
+
+No workplace like home? 
+
+What all the seminars, workshops and equal opportunities pledges were struggling to achieve may just have been turbocharged with the combination of a traumatic pandemic and tech.
+
+Pre-pandemic, Silicon companies like Facebook were renowned for their tasty workplace extras - offering everything from award-winning chefs in the staff restaurant, games rooms and gyms to tree-house break-out zones and meditation pods. 
+
+Today, there may be no need to skateboard over to the brainstorm room. Meta’s 2022 diversity report (https://about.fb.com/news/2022/07/metas-diversity-report-2022/) states that around 75% of its teams are now working across multiple locations.
+
+“For the first time,” says Meta, “we’re hiring individuals who are fully remote and working from locations where we don’t have offices.”
+
+As a result Meta has found its hiring pool suddenly much, much larger. With unprecedented access to talent around the globe, it’s been much better able to accelerate its diversity quota. It has doubled its hire rate on two key targets - Black and Hispanic employees in the US, and women around the globe. 
+
+People with disabilities now make up 6.2% of the workforce, up from 4.7% in 2021. Along with 2.3% veterans and 10% LGBTQ+ identifiers, these figures seem to back up Meta’s statement that underrepresented people now make up 46.7% of its staff.
+
+Remote works
+
+Remote hiring has to be a key factor in this. Research by Future Forum in 2021 (https://futureforum.com/2021/03/11/dismantling-the-office-moving-from-retrofit-to-redesign/) found that Black employees strongly prefer a remote or hybrid model of working. A staggering 97% of them, in fact. In the US only 3% wished to return to full-time in-person work, compared to 21% of white workers.
+
+In 2021 the UK government called for a national shift in favour of remote, hybrid and flexible working (https://www.gov.uk/flexible-working), after its Behavioural Insights Team found there was a 30% uptake of job applications for any role offering these options. Its then Minister for Women and Equalities, Liz Truss, called for employers to make flexible working a standard option to help level up the UK, boost opportunities for women and reduce geographic inequality.
+
+Invisible restrictions, such as the need to live close to the office in a city where the cost of renting is too high, or a gruelling daily commute, evaporate when remote working is an option. 
+
+Parents with childcare commitments, home-based carers and people with disabilities are now on a much more level playing field. Age is less of a barrier. A tangibly youthful vibe in the office might once have disheartened a fifty-something job candidate, but virtual meetings help to showcase substance above appearance. So-called "silver workers" are a valuable resource (https://www.adeccogroup.com/future-of-work/latest-insights/silver-workers-pave-their-own-way-in-the-workforce/) both on their own merits and as a smart solution to talent scarcity. 
+
+The numbers are compelling, too. 
+
+16% of companies in the world (as at 2022) are now fully remote. (https://findstack.com/remote-work-statistics/)
+
+3-10% is the average rise in productivity (https://www.bloomberg.com/opinion/articles/2022-06-02/are-workers-more-productive-at-home) among remote employees.
+
+19% higher innovation revenues (https://hbr.org/2018/01/how-and-where-diversity-drives-financial-performance) have been noted among diversely-staffed businesses.
+
+
+ A promise, not a panacea
+ 
+Savings at the employee end can be significant, another big factor in boosting diversity. Rail commuters can hang on to a hefty chunk of their salary when they no longer need to squeeze into rush hour carriages five days a week. Also, the cost of dressing for work shrinks to, well, the top half. In fact, estimated savings for remote workers in the US are around $7,000.(https://findstack.com/remote-work-statistics/)
+
+Of course, for some - 16-24-year-olds in particular - escape is to the office, not from it. We have to remember that remote working is not a panacea. The three biggest challenges are unplugging after work (22%), loneliness (19%), and communication / collaboration (17%). (https://findstack.com/remote-work-statistics/)
+
+But going by the statistics and the global conversation, remote and hybrid working is part of a new employment landscape, where equality and inclusivity sit on the horizon. It’s a CDO’s dream. While many obstacles remain between where we are today and a truly equitable workplace, the huge changes of the last two years should help give CDOs the tools and support they need to move us further towards that goal.
+
+"""},
+    {"role": "user", "content": "Can you write a 800-word article. \n Topic:The barriers to the 4 day work week?  \n Brief:   The main barrier to implementing a 4 day work week tends to be the financial investment required to make it work (hiring more staff, investing in new software, etc), but there are others. A brief video looking into the other barriers:\n Here are some examples:\n- financial cost\n- additional training\n- corporate culture\n- any others?"},
+    {"role": "assistant", "content": """
+    What we now know about moving to a four-day week
+                                   
+Showing up to work five days a week is so ingrained it’s hard to imagine anything else - yet not working on Saturdays and Sundays is still a fairly recent invention. US carmaker Henry Ford popularised the shorter working week in the 1920s, and a new normal was born. But a century later, does the five-day or 40-hour week still work for us?
+
+How the world is embracing the four-day week 
+The United Arab Emirates adopted a four-and-a-half-day working week in 2021. Countless other countries - Spain, Scotland and Belgium among them - are trialling working fewer hours without dropping pay or productivity.
+
+Many employers are ahead of the curve on this. In 2021, Atom bank became Britain’s largest company to adopt a four-day week, moving from 37 to 34 hours. When Toyota described in 2015 how it had shifted to a 30-hour week in Sweden, it had already been in place for 12 years.
+
+The potential benefits can be profound. Toyota asked employees to work six hours a day but continued to pay them for eight - resulting in shorter customer waiting times, better productivity and low employee turnover. And when they built a new facility geared towards the six-hour day they were able to make it much smaller despite hiring more people, because the workforce was now spread across two shifts.
+
+The reported benefits cascade further, from better employee mental health (and reduced absence) to a smaller carbon footprint and lower overheads. But there can be significant challenges to implementing a four-day week.
+
+1. The financial costs of switching
+When it concluded in 2017, a two-year trial involving 68 nurses at an old people’s home in Gothenburg was deemed too expensive to roll-out regionally. The experiment created jobs and reduced sick pay yet cost the city 12 million Kroner (£1.1m) in extra staff.
+
+Not surprisingly, the cost implications vary by sector. At New Zealand finance company Perpetual Guardian, staff feedback identified a need for investment into remote work tech and automation (i.e., chat bots).
+
+US company Wildbit moved to a permanent four-day week in 2017. They’ve invested in its success by paying staff to create remote environments suitable for deep focus and quality work. 
+
+2. Productivity
+Online coding school Treehouse started life in 2013 with the 32-hour week as standard. By 2016 they’d gone the other way - to a 40-hour week.
+
+CEO Ryan Carson has explained why the four-day week didn’t work for Treehouse, saying ultimately it contributed to a reduced work ethic. This aligns with Perpetual Guardian, where managers found increased productivity depended on whether employees saw the new model as a privilege or a right.
+
+3. Culture clash
+It may sound counterintuitive, but not everyone wants more free time. Perpetual Guardian and Wildbit report some staff were uncomfortable with extra unstructured or alone time (Wildbit facilitates conversations about volunteering and hobbies to support this).
+
+High demand and seasonal work can be a challenge, too, with some staff at Perpetual Guardian working compressed rather than fewer hours, i.e., gruelling 10-hour days.
+
+Toyota’s responses include letting employees choose whether to work fewer hours, increasing the work force and introducing overlapping shifts. There are solutions – though they reveal the complexities of switching.
+
+4. Doing things differently 
+In Iceland, all public employees - from office workers to nurses and police – moved to shorter hours following years of large-scale testing. Reduced hours clearly can work across diverse sectors, but it means rethinking work priorities.
+
+Meetings can be disruptive to deep work, not to mention time-heavy. Iceland ‘paid for’ its drop to 35 hours by pruning them back in favour of email.
+
+Wildbit champions asynchronous communication (email, Slack and Basecamp), though they acknowledge the social risks of losing face-to-face contact. They also underline the duality of digital tools as both productivity and procrastination enablers: they have to be used with purpose to be effective.
+
+Organisations also need to plan how reduced hours align with leave allowances and training sessions, and how or if colleagues communicate between shifts (some Icelandic employees said the need to contact colleagues ‘out of hours’ increased with fewer hours).
+
+When Henry Ford embraced a shorter working week he foresaw its correlation to productivity. The near universal uptake of the five-day week as standard proves his instincts were right. So is the four-day week the next logical step? The many countries and companies thriving on shorter hours is a compelling signpost - and their candour about what works and doesn't work is a useful starting point for anyone considering following suit. But changing has very real consequences on the way businesses structure their staff and their interactions with each other and clients. These complexities should be considered properly.
+"""},
+]
 
 
 
