@@ -117,32 +117,7 @@ if check_password():
         In a report published earlier this year, the G20 observed that natural gas meets a considerable share of seasonal energy demand in many countries, offering resilience and security of supply in the face of adverse weather and volatile markets. In addition to this short-term role, the group suggested that an extensive roll-out of CCUS technology and hydrogen production in the longer term would enable natural gas to align with a net-zero pathway.
         """},
         {"role": "assistant",   "content": "Frame 1: Natural gas has a crucial role to play in the energy transition. Here’s how \n Frame 2: Natural gas is affordable, reliable and easy to store\nFrame 3: And it emits up to 50% less greenhouse gases than coal\nFrame 4: Here are 4 ways natural gas is helping power the energy transition\nFrame 5: 1. It offers a reliable low-carbon back-up for peak energy demand\nFrame 6: Providing a stable energy supply while renewable technologies grow\nFrame 7: 2. It acts as a bridging ingredient in the hydrogen energy revolution\nFrame 8: Hydrogen from renewables will play a key role in our climate-neutral future\nFrame 9: For now, the path to cleaner hydrogen relies on natural gas\nFrame 10: 3. It helps fight energy poverty\nFrame 11: In Africa, 600 million people still don’t have access to electricity or clean cooking\nFrame 12: Alongside renewables, natural gas can help fast-track the energy transition\nFrame 13: Combined with carbon capture and storage, it can transform the energy sector\nFrame 14: Thanks to carbon capture technology, we can reduce the emissions from natural gas processing\nFrame 15: Helping reduce hard-to-abate emissions from heavy industry like steel and cement"},
-        {"role": "user", "content": """Create a video script for a 30-seconds explainer.
-
-Topic: What is cycle syncing?
-
-Brief: A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.Make sure to mention that you don't have to be an athlete to benefit from cycle synching"""},
-        {"role": "assistant", "content": """Frame 1: Cycle Syncing - the fitness trend you need to know
-Frame 2: Coaches of the US Women's Soccer Team & Chelsea FC credit it for success
-Frame 3: So what is cycle syncing?
-Frame 4: It's customizing training to match the phases of your menstrual cycle
-Frame 5: Empowering female athletes to maximize their potential & avoid injury
-Frame 6: How can you benefit from cycle syncing?
-Frame 7: You don't have to be a pro athlete
-Frame 8: Simply adapt workouts to your cycle's phases for better results
-Frame 9: Tailor your training - unleash your full potential with cycle syncing
-Frame 10: Try cycle syncing today!"""},
-        {"role": "user", "content": """In frame 9 you talk about training, but can you change so it applies  to anyone, not just people who train or workout?"""},
-        {"role":"assistant", "content": """Frame 1: Cycle Syncing - the wellness trend you need to know
-Frame 2: Coaches of the US Women's Soccer Team & Chelsea FC credit it for success
-Frame 3: So what is cycle syncing?
-Frame 4: It's customizing activities to match the phases of your menstrual cycle
-Frame 5: Empowering women to maximize potential & avoid imbalances
-Frame 6: How can you benefit from cycle syncing?
-Frame 7: You don't have to be an athlete
-Frame 8: Simply adapt daily routines to your cycle's phases for better well-being
-Frame 9: Harness your cycle - enhance overall wellness with cycle syncing
-Frame 10: Try cycle syncing today!"""}
+      
 
         ]
     
@@ -316,33 +291,63 @@ Frame 10: Try cycle syncing today!"""}
 
     if "script_messages"  not in st.session_state:
         st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+    if "article_messages"  not in st.session_state:
+        st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
     
    
-
-    if st.button("Create script", key ='send'):
-        with st.spinner("Let me do my thing..."):
-            st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
-            response = openai_call(st.session_state["script_messages"])
-            message_response = response["choices"][0]["message"]["content"]
-            st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
+   
+    if type == "Video Script":
+        if st.button("Create script", key ='send'):
+            with st.spinner("Let me do my thing..."):
+                st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
+                response = openai_call(st.session_state["script_messages"])
+                message_response = response["choices"][0]["message"]["content"]
+                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
+            
+    
+        prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
         
-  
-    prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
-    
-    if st.button("Change", key = 'change'):
-        with st.spinner("Let me make some adjustments..."):
-            st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
-            response = openai_call(st.session_state["script_messages"])
-            message_response = response["choices"][0]["message"]["content"]
-            st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
-    
-    if st.button("Clear", key="clear"):
-        st.session_state["messages"] = BASE_PROMPT_VIDEO
+        if st.button("Change", key = 'change'):
+            with st.spinner("Let me make some adjustments..."):
+                st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
+                response = openai_call(st.session_state["script_messages"])
+                message_response = response["choices"][0]["message"]["content"]
+                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
+        
+        if st.button("Clear", key="clear"):
+            st.session_state["messages"] = BASE_PROMPT_VIDEO
 
-    for i in range(len(st.session_state["script_messages"])-1, 10, -1):
-        if st.session_state["script_messages"][i]['role'] == 'user':
-            message(st.session_state["script_messages"][i]['content'], is_user=True)
-        if st.session_state["script_messages"][i]['role'] == 'assistant':
-            message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-                
+        for i in range(len(st.session_state["script_messages"])-1, 10, -1):
+            if st.session_state["script_messages"][i]['role'] == 'user':
+                message(st.session_state["script_messages"][i]['content'], is_user=True)
+            if st.session_state["script_messages"][i]['role'] == 'assistant':
+                message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+    
+        if type == "Article":
+            if st.button("Create", key ='send'):
+                with st.spinner("Let me do my thing..."):
+                st.session_state["article_messages"] += [{"role": "user", "content": end_prompt}]
+                response = openai_call(st.session_state["article_messages"])
+                message_response = response["choices"][0]["message"]["content"]
+                st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
+            
+    
+            prompt = st.text_area("Make adjustments (After **Create Article** )", placeholder = "Can you make the article shorter?")
+            
+            if st.button("Change", key = 'change'):
+                with st.spinner("Let me make some adjustments..."):
+                    st.session_state["article_messages"] += [{"role": "user", "content": prompt}]
+                    response = openai_call(st.session_state["article_messages"])
+                    message_response = response["choices"][0]["message"]["content"]
+                    st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
+            
+            if st.button("Clear", key="clear"):
+                st.session_state["messages"] = BASE_PROMPT_VIDEO
+
+            for i in range(len(st.session_state["article_messages"])-1, 8, -1):
+                if st.session_state["article_messages"][i]['role'] == 'user':
+                    message(st.session_state["article_messages"][i]['content'], is_user=True)
+                if st.session_state["article_messages"][i]['role'] == 'assistant':
+                    message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+        
 
