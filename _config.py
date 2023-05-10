@@ -227,7 +227,7 @@ Frame 7: By using BIRS we can understand the risks and opportunities of the ecos
 Frame 8: Like the rare orchids discovered and preserved by Holcim Lebanon \n
 Frame 9: That’s why we’re rolling it out to 100% of our quarries by 2024 \n
 Frame 10: Building progress for both people and planet"""}, 
-    {"role": "user", "content": "Create a video script for a 45-second explainer video. \n\n Topic: Sporting architecture and Holcim \n\n Brief: Brief : A video about architecture in sports. Start with explaining why and how architecture is important to sport and helps to create a spectacle and successful events. Then explain details on some of Holcim's most famous sporting buildings:\n Bruins stadium\nSport Hall Dolni Brezany, Czech Republic\nMcLaren research centre\nMiami University stadium"},
+    {"role": "user", "content": "Create a video script for a 45-second explainer video. \n\n Topic: Sporting architecture and Holcim \n\n Brief: A video about architecture in sports. Start with explaining why and how architecture is important to sport and helps to create a spectacle and successful events. Then explain details on some of Holcim's most famous sporting buildings:\n Bruins stadium\nSport Hall Dolni Brezany, Czech Republic\nMcLaren research centre\nMiami University stadium"},
     {"role": "assistant", "content": """Frame 1: Architecture has a huge impact on sport
 Frame 2: Stadiums, race tracks and arenas can hold legendary status
 Frame 3: Sometimes due to historical significance, such as the colosseum in Rome…
@@ -241,7 +241,8 @@ Frame 10: The 60,000 seat Ebimpé Stadium, Ivory Coast
 Frame 11: The Bruins Warrior Arena, Massachusetts, USA
 Frame 12: Sport Hall Dolny Brezani, Czech Republic
 Frame 13: McLaren Technology Centre, United Kingdom"""},
-
+    {"role": "user", "content": "Create a video script for a 60-second explainer video. \n\n Topic:  Holcim's biodiversity strategy\n\n Brief: A video to highlight Holcim's biodiversity strategy in a video or carousel \nI will provide you with some examples, you can use them as reference: \n\n Explainer: 'How we rehabilitate our quarries' or 'What does the rehabilitation of a quarry look like?' \n\n– Essentially laying out the process of a quarry rehabilitation\n– Explaining why it's so important to get it right (through transformative rehab rather than planting monocultures) and the benefits to nature rehab can bring in a relatively short time frame\n– Showing what a rehabilitated quarry looks like (https://www.holcim.com/media/media-releases/eclepens-a-quarry-making-a-measurable-positive-impact-biodiversity) \n–Highlight that Holcim have done this before and that all of their sites will have rehabilitation plans by 2024"},
+ {"role": "assistant", "content":"Frame 1: How do we keep our quarries in harmony with nature?\nFrame 2: We work hard to protect biodiversity across all of our active and inactive quarries\nFrame 3: Ultimately leaving the land in a better condition than before we started\nFrame 4: And this isn’t just about planting trees\nFrame 5: Independent ecologists record the specific species at the site\nFrame 6: So we know which local flora to plant and animal habitats to build\nFrame 7: As well as replenishing key sites with water and soil\nFrame 8: To restore the rich biodiversity of the land\nFrame 9: Our rehabilitated site in Mombasa, Kenya, now supports over 400 indigenous tree species\nFrame 10: As well as 180 bird and 34 mammal species\nFrame 11: And our Yepes quarry in Spain has been transformed into a natural reserve\nFrame 12: With wildflowers and their pollinators moving in\nFrame 13: It’s part of our commitment to a nature-positive future"}
 ]
 
 
