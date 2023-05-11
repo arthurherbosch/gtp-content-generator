@@ -102,10 +102,11 @@ if check_password():
                 articles_list = articles.split('\n')
                 article_string = ""
                 counter = 1
-                for article in articles_list:
-                    result  = get_article(article)
-                    article_string += f"Article %s: \n{result} \n\n ## \n\n" % (counter) 
-                    counter += 1
+                if len(articles_list) != 0:
+                    for article in articles_list:
+                        result  = get_article(article)
+                        article_string += f"Article %s: \n{result} \n\n ## \n\n" % (counter) 
+                        counter += 1
                 end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
                 st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
                 response = openai_call(st.session_state["script_messages"])
