@@ -4,7 +4,6 @@ import openai
 import streamlit as st
 from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE
 import requests
-import oneai
 
 #hide_menu_style = """
 #        <style>
