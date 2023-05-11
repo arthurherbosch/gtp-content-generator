@@ -70,7 +70,7 @@ def get_article(url):
     }
     r = requests.post(url, json=payload, headers=headers)
     data = r.json()
-    return(data['input_text'])
+    return(data)
 
 if check_password():
     st.title("Content Engine Digital Writer V1")
