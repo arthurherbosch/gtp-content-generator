@@ -148,23 +148,3 @@ if check_password():
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
         
 
-def get_article(url):
-        
-    url = "https://api.oneai.com/api/v0/pipeline"
-    headers = {
-        "api-key" : "a97ed467-e7f9-4662-8ba9-63b6cd8f3bcb",
-        "content-type" : "application/json"
-    }
-
-    payload = {
-        "input" : url,
-        "input_type" : "article",
-        "steps": [
-            {
-                "skill": "html-extract-article"
-            }
-        ],
-    }
-    r = requests.post(url, json=payload, headers=headers)
-    data = r.json()
-    return  str(data['input_text'])
