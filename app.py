@@ -87,32 +87,9 @@ if check_password():
         type_vid = st.selectbox(
         'What type of video?',
         ('hype ', 'explainer', 'animation'))
-
-
-    if type == 'Article':
-        words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
-        st.write("Article will be around ", words, 'words')
-        
-
-    end_prompt = " "
-    if type == 'Video Script':
         brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
         articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
         
-    elif type == 'Article':
-        brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
-        end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
-   
-
-
-    if "script_messages"  not in st.session_state:
-        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-    if "article_messages"  not in st.session_state:
-        st.session_state["article_messages"] = ADECCO_ARTICLE
-    
-   
-   
-    if type == "Video Script":
         if st.button("Create script", key ='send'):
             with st.spinner("Let me do my thing..."):
                 articles_list = articles.split('\n')
@@ -146,7 +123,27 @@ if check_password():
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
             if st.session_state["script_messages"][i]['role'] == 'assistant':
                 message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+
+
+    if type == 'Article':
+        words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
+        st.write("Article will be around ", words, 'words')
+        brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
+        end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
+   
+
+    end_prompt = " "
+          
+
+    if "script_messages"  not in st.session_state:
+        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+    if "article_messages"  not in st.session_state:
+        st.session_state["article_messages"] = ADECCO_ARTICLE
     
+   
+   
+
+            
     if type == "Article":
         if st.button("Create", key ='send'):
             with st.spinner("Let me do my thing..."):
