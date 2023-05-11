@@ -3,6 +3,8 @@ from streamlit_chat import message
 import openai
 import streamlit as st
 from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE
+import requests
+import oneai
 
 #hide_menu_style = """
 #        <style>
@@ -82,7 +84,8 @@ if check_password():
         brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
         end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
    
-
+    
+    articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
 
 
     if "script_messages"  not in st.session_state:
@@ -147,3 +150,23 @@ if check_password():
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
         
 
+def get_article(url):
+        
+    url = "https://api.oneai.com/api/v0/pipeline"
+    headers = {
+        "api-key" : "a97ed467-e7f9-4662-8ba9-63b6cd8f3bcb",
+        "content-type" : "application/json"
+    }
+
+    payload = {
+        "input" : url,
+        "input_type" : "article",
+        "steps": [
+            {
+                "skill": "html-extract-article"
+            }
+        ],
+    }
+    r = requests.post(url, json=payload, headers=headers)
+    data = r.json()
+    return  str(data['input_text'])
