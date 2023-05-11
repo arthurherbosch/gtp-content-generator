@@ -84,7 +84,6 @@ if check_password():
         end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
    
     
-    articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
 
 
     if "script_messages"  not in st.session_state:
