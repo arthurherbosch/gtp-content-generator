@@ -101,7 +101,7 @@ if check_password():
         articles_list = articles.split('\n')
         
         article_string = ""
-        for index ,article in articles_list:
+        for index, article in articles_list:
             result  = get_article(article)
             article_string += f"Article %s: \n{result} \n\n ## \n\n" % (index+1) 
         
