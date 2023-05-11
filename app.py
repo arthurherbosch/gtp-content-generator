@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_chat import message
 import openai
-import streamlit as st
 from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE
 import requests
 
