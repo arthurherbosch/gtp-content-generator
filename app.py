@@ -60,7 +60,7 @@ def get_article(url):
     }
 
     payload = {
-        "input" : "https://www.ief.org/news/high-level-experts-meet-for-the-9th-joint-iea-ief-opec-workshop-on-the-interactions-between-physical-and-financial-energy-markets",
+        "input" : url,
         "input_type" : "article",
         "steps": [
             {
