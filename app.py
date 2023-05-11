@@ -84,7 +84,8 @@ if check_password():
         st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     if "article_messages"  not in st.session_state:
         st.session_state["article_messages"] = ADECCO_ARTICLE
-    
+    end_prompt = " "
+
    
     if type == 'Video Script':
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
@@ -138,7 +139,6 @@ if check_password():
         end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
    
 
-    end_prompt = " "
           
 
 
@@ -163,9 +163,7 @@ if check_password():
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
         
-        if st.button("Clear", key="clear"):
-            st.session_state["article_messages"] = ADECCO_ARTICLE
-
+        
         for i in range(len(st.session_state["article_messages"])-1, 8, -1):
             if st.session_state["article_messages"][i]['role'] == 'user':
                 message(st.session_state["article_messages"][i]['content'], is_user=True)
