@@ -52,6 +52,25 @@ def check_password():
     else:
         return True
         
+def get_article(url):
+    url = "https://api.oneai.com/api/v0/pipeline"
+    headers = {
+        "api-key" : "a97ed467-e7f9-4662-8ba9-63b6cd8f3bcb",
+        "content-type" : "application/json"
+    }
+
+    payload = {
+        "input" : "https://www.ief.org/news/high-level-experts-meet-for-the-9th-joint-iea-ief-opec-workshop-on-the-interactions-between-physical-and-financial-energy-markets",
+        "input_type" : "article",
+        "steps": [
+            {
+                "skill": "html-extract-article"
+            }
+        ],
+    }
+    r = requests.post(url, json=payload, headers=headers)
+    data = r.json()
+    return(str(data['input_text']))
 
 if check_password():
     st.title("Content Engine Digital Writer V1")
@@ -79,9 +98,17 @@ if check_password():
     if type == 'Video Script':
         brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
         articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
-        chunks = articles.split('\n')
-
-        end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n Articles:{chunks[1]} "
+        articles = articles.split('\n')
+        
+        article_string = ""
+        for index , article in articles:
+            article  = get_article(article)
+            article_string += f"Article %s: \n{article} \n\n ## \n\n" % (index+1) 
+          
+            
+        
+        end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+        
     elif type == 'Article':
         brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
         end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
@@ -149,22 +176,3 @@ if check_password():
             if st.session_state["article_messages"][i]['role'] == 'assistant':
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
         
-def get_article(url):
-    url = "https://api.oneai.com/api/v0/pipeline"
-    headers = {
-        "api-key" : "a97ed467-e7f9-4662-8ba9-63b6cd8f3bcb",
-        "content-type" : "application/json"
-    }
-
-    payload = {
-        "input" : "https://www.ief.org/news/high-level-experts-meet-for-the-9th-joint-iea-ief-opec-workshop-on-the-interactions-between-physical-and-financial-energy-markets",
-        "input_type" : "article",
-        "steps": [
-            {
-                "skill": "html-extract-article"
-            }
-        ],
-    }
-    r = requests.post(url, json=payload, headers=headers)
-    data = r.json()
-    return(str(data['input_text']))
