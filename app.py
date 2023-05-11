@@ -3,7 +3,8 @@ from streamlit_chat import message
 import openai
 import streamlit as st
 from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE
-
+import oneai
+import requests
 #hide_menu_style = """
 #        <style>
 #        #MainMenu {visibility: hidden;}
@@ -111,7 +112,7 @@ if check_password():
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
         
         if st.button("Clear", key="clear"):
-            st.session_state["messages"] = BASE_PROMPT_VIDEO
+            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
 
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
@@ -138,7 +139,7 @@ if check_password():
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
         
         if st.button("Clear", key="clear"):
-            st.session_state["messages"] = ADECCO_ARTICLE
+            st.session_state["article_messages"] = ADECCO_ARTICLE
 
         for i in range(len(st.session_state["article_messages"])-1, 8, -1):
             if st.session_state["article_messages"][i]['role'] == 'user':
@@ -146,3 +147,22 @@ if check_password():
             if st.session_state["article_messages"][i]['role'] == 'assistant':
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
         
+def get_article(url):
+    url = "https://api.oneai.com/api/v0/pipeline"
+    headers = {
+        "api-key" : "a97ed467-e7f9-4662-8ba9-63b6cd8f3bcb",
+        "content-type" : "application/json"
+    }
+
+    payload = {
+        "input" : "https://www.ief.org/news/high-level-experts-meet-for-the-9th-joint-iea-ief-opec-workshop-on-the-interactions-between-physical-and-financial-energy-markets",
+        "input_type" : "article",
+        "steps": [
+            {
+                "skill": "html-extract-article"
+            }
+        ],
+    }
+    r = requests.post(url, json=payload, headers=headers)
+    data = r.json()
+    return(str(data['input_text']))
