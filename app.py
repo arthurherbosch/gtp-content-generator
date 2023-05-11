@@ -79,7 +79,13 @@ if check_password():
     ('Video Script', 'Article'))
     
     video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
-
+    
+    if "script_messages"  not in st.session_state:
+        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+    if "article_messages"  not in st.session_state:
+        st.session_state["article_messages"] = ADECCO_ARTICLE
+    
+   
     if type == 'Video Script':
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
@@ -135,12 +141,7 @@ if check_password():
     end_prompt = " "
           
 
-    if "script_messages"  not in st.session_state:
-        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-    if "article_messages"  not in st.session_state:
-        st.session_state["article_messages"] = ADECCO_ARTICLE
-    
-   
+
    
 
             
