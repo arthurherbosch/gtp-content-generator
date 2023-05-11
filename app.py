@@ -52,7 +52,7 @@ def check_password():
     else:
         return True
         
-def get_article(url):
+def get_article(article_url):
     url = "https://api.oneai.com/api/v0/pipeline"
     headers = {
         "api-key" : "a97ed467-e7f9-4662-8ba9-63b6cd8f3bcb",
@@ -60,7 +60,7 @@ def get_article(url):
     }
 
     payload = {
-        "input" : url,
+        "input" : article_url,
         "input_type" : "article",
         "steps": [
             {
@@ -70,7 +70,7 @@ def get_article(url):
     }
     r = requests.post(url, json=payload, headers=headers)
     data = r.json()
-    return(data)
+    return(data['input_text'])
 
 if check_password():
     st.title("Content Engine Digital Writer V1")
