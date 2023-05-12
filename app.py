@@ -125,6 +125,7 @@ if check_password():
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
         
         if st.button("Clear", key="clear"):
+            st.session_state["script_messages"] = []
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
 
 
