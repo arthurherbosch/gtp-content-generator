@@ -85,11 +85,10 @@ if check_password():
     if "article_messages"  not in st.session_state:
         st.session_state["article_messages"] = ADECCO_ARTICLE
     end_prompt = " "
-    if st.button("Clear", key="clear"):
-        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
 
    
     if type == 'Video Script':
+        
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
     
@@ -125,7 +124,11 @@ if check_password():
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
         
-       
+        if st.button("Clear", key="clear"):
+            sup = st.text_area("sup", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
+
+            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+
 
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
