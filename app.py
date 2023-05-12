@@ -126,7 +126,9 @@ if check_password():
         
     
 
-
+        if st.button("Clear", key="clear"):
+            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+            st.markdown(BASE_PROMPT_VIDEO)
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
@@ -135,8 +137,7 @@ if check_password():
                 
         
 
-    if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+    
     if type == 'Article':
         words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
         st.write("Article will be around ", words, 'words')
