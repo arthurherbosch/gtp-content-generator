@@ -168,7 +168,9 @@ if check_password():
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
         
-        
+        if st.button("Clear", key="clear"):
+            st.session_state["article_messages"] = ADECCO_ARTICLE[:9]
+            
         for i in range(len(st.session_state["article_messages"])-1, 8, -1):
             if st.session_state["article_messages"][i]['role'] == 'user':
                 message(st.session_state["article_messages"][i]['content'], is_user=True)
