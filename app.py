@@ -125,7 +125,7 @@ if check_password():
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
         
         if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+            st.session_state["script_messages"] = BASE_PROMPT_ARTICLES
 
 
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
