@@ -137,22 +137,31 @@ if check_password():
         
 
     
-    if type == 'Article':
-        words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
-        st.write("Article will be around ", words, 'words')
-        brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
-        end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief}" 
+        
    
 
           
 
-
-   
-
             
     if type == "Article":
+        words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
+        st.write("Article will be around ", words, 'words')
+        brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
+        articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
+
         if st.button("Create", key ='send'):
             with st.spinner("Let me do my thing..."):
+                articles_list = articles.split('\n')
+                article_string = ""
+                counter = 1
+                if len(articles) != 0:
+                    for article in articles_list:
+                        result  = get_article(article)
+                        article_string += f"Article %s: \n{result} \n\n ## \n\n" % (counter) 
+                        counter += 1
+                        
+                end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
+
                 st.session_state["article_messages"] += [{"role": "user", "content": end_prompt}]
                 response = openai_call(st.session_state["article_messages"])
                 message_response = response["choices"][0]["message"]["content"]
