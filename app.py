@@ -124,9 +124,7 @@ if check_password():
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
         
-        if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = []
-            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+    
 
 
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
@@ -137,7 +135,8 @@ if check_password():
                 
         
 
-
+    if st.button("Clear", key="clear"):
+            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     if type == 'Article':
         words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
         st.write("Article will be around ", words, 'words')
