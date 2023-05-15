@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 import streamlit as st
-from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE
+from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE, LLH_ARTICLES
 import oneai
 import requests
 #hide_menu_style = """
@@ -83,7 +83,7 @@ if check_password():
     if "script_messages"  not in st.session_state:
         st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     if "article_messages"  not in st.session_state:
-        st.session_state["article_messages"] = ADECCO_ARTICLE
+        st.session_state["article_messages"] = LLH_ARTICLES
     end_prompt = " "
 
    
@@ -178,7 +178,7 @@ if check_password():
                 st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
         
         if st.button("Clear", key="clear"):
-            st.session_state["article_messages"] = ADECCO_ARTICLE[:9]
+            st.session_state["article_messages"] = LLH_ARTICLES[:9]
             
         for i in range(len(st.session_state["article_messages"])-1, 8, -1):
             if st.session_state["article_messages"][i]['role'] == 'user':

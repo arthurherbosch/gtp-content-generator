@@ -383,3 +383,166 @@ When Henry Ford embraced a shorter working week he foresaw its correlation to pr
 
 
 
+
+LLH_ARTICLES = [
+    {"role": "system", "content": "Intelligent writer that writes articles in a particular style"},
+    {"role": "user", "content": "I want you to writes articles on certain topics. We want our acrticles to be in a certain style, so I will provide some examples. You can use those examples to create similar articles."},
+    {"role": "assistant", "content": "Okay, can you provide me with a brief so that I can create an article. "},
+    {"role": "user", "content": "Can you write a 600-word article. \n Topic: AI and the disrupted career: how will AI affect career progression?  \n Brief: 23% of workers have never had a career conversation. The introduction of AI into the labor market will realistically disrupt many careers - either by derailing them or halting them dead in their tracks. Key message = in the hands of an emotionally intelligent leader, AI could be a great tool to augment career conversations and fill the gaps for orgs that don't have enough people to have these conversations. AI can also be used to calculate career health, skills maps, unbiased career progression options, etc... As a tool, it would bring most benefit in terms of fact-based conversations that doesn't require 'soft' skills or emotional intelligence."},
+    {"role": "assistant", "content": """Meaningful conversations between employers and their people are the key to retention, but almost a quarter of workers we surveyed told us they’d never talked about their career progression with their boss.  Too many workers lack a clear view of their career path as it is, so how will the introduction of groundbreaking tech into the mix affect people’s careers? Can leaders actually leverage AI to augment career conversations? 
+
+The Great Replacement? The fear that AI will replace human workers isn’t entirely unfounded. AI-enabled technology has replaced roles in some industries like manufacturing and customer service. But AI isn’t a one-size-fits-all solution. Sure, some mundane and repetitive tasks are ripe for automation by a robot, but there are plenty of others which require the intuition, creativity and empathy that only a human can provide. AI will also create new jobs that require different skills – just look at the explosion in the demand for prompt engineers. In fact, the World Economic Forum predicts that AI will create 12 million more jobs than it eliminates by 2025. What’s more, AI has the potential to make a lot of jobs more enjoyable. Employees will get to do the rewarding parts of their jobs like talking to clients or working on creative problem-solving while the menial tasks are handled by an AI assistant. The best thing employees can do is keep one eye on the trends and think about where it might take their careers. 
+The “job for life” is no more . The idea of a “job for life” has been dying for some time, but will AI be the final nail in its coffin? Quite possibly. 
+
+The introduction of AI to the labor market is likely to act as a watershed moment for many employees. In ten years, people will probably be talking about their working life “before AI” and “after AI”. This technology is going to exponentially increase the pace at which the job market changes, and this brave new world will favor the agile worker. Will people have to rethink the careers they’re currently building? Absolutely. We're living through a seismic shift, make no mistake about it. The impact of AI on people's careers will be profound, but we’re not heading for a dystopian future in which humans become obsolete: far from it. 
+
+How can AI help your career progression? 
+AI is a great tool for leaders to use when talking about career progression with their people. Here are a few ways that AI can augment those conversations: 
+1. Personalized career development : Use AI to analyze performance, skills, and interests to create a personalized career development plan for every employee. People can identify their strengths and double down on them to advance their careers. 
+
+2. Improved work-life balance : AI-powered chatbots and virtual assistants automate repetitive tasks and free up time for employees to focus on more fulfilling and creative work. Hello great work-life balance and goodbye burnout! 
+
+3. Better training and development : Training fueled by AI gives employees personalized experiences tailored to their specific needs and learning styles, helping them to learn new skills more efficiently. 
+
+4. Enhanced decision making : Finally, the real-time, data-driven insights provided by AI-enabled tools can help employees make better decisions about their careers. """},
+    {"role": "user", "content": """Can you write a 600-word article. \n Topic: What’s the secret to a lean and diverse workforce? Total Talent Management?  \n Brief:Introducing the idea of “total talent management” => how do you consider your entire workforce, not just those on payroll? For example, interns, trainees, apprentices, temps, etc... 
+
+How does engagement, retention, developing work - especially during transformation/turbulent times? Especially tricky for international businesses that span jurisdictions with different legislation/regulations?
+
+On top of looking at workforce by type of employment, think of other angles too (development, looking at skill shortages/gaps and skills maps in the overall talent development) => holistic view rather than compartmentalized
+
+You can get some information from these articles:
+
+Article 1:
+What is Total Talent Management?
+Total talent management (TTM) is an emerging solution within the workforce solutions industry that integrates permanent (RPO) and contingent talent (MSP) solutions to create an all-encompassing, holistic approach to talent management.
+
+The concept of Total Talent Management has been with us for a while now. Today, it has as many doubters as it does proponents. For some, a TTM solution will never be a realistic possibility. But it’s hard to argue with the fact that the direction of travel is clearly towards a TTM approach.
+
+Many MSP programmes now incorporate RPO-like aspects, such as employer branding and employer value propositions (EVPs) — particularly in the UK, though this practice is also spreading across the globe. Likewise, we are seeing an increasing number of businesses choosing to expand their MSP programmes to incorporate RPO and SOW.
+
+Though Total Talent Management in its purest form might not be with us yet, it seems we’re heading in that direction.
+
+The benefits of Total Talent Management
+Improved ability to respond to wider business strategies
+Better workforce productivity through the effective deployment of all available skills.
+Ability to evaluate the availability of skills across the total workforce and choose or flex the optimum engagement type for the required skill.
+Total Talent Management could be one solution to cure workforce management ills. Bringing permanent and non-permanent workers into one solution could facilitate greater alignment in an organisation, with one single point of contact — the workforce solution provider — managing all aspects of a business’s talent management strategy.
+
+“The adoption of a broad range of non-traditional and agile work styles are increasingly recognized as integral to organisational success. Organisations who are able to attract, optimise and retain all employed and non-employed talent types can create a competitive advantage in their market.”
+Jo Matkin, Global Workforce Solutions Research Director at Staffing Industry Analysts
+
+In the past decade, the contingent workforce has grown across most global businesses. Today, up to 40% of a business is made up of non-permanent talent, creating a truly mixed workforce. In light of this, business leaders need to change their approach to talent — particularly if they want to successfully navigate today’s most prominent talent trends. 
+
+Total Talent Management ensures a consistent employer brand
+TTM also allows a consistent employer brand for both contingent and permanent talent to emerge. Most global businesses have an employer brand, but for most, this is exclusively catered towards permanent talent. As the most gifted workers embrace greater flexibility, businesses won’t have any option but to build an employer brand for contingent workers, too.
+
+When rolled into an MSP programme, Contingent RPO helps to some degree. But, ideologically speaking, having a truly holistic approach to talent management — which TTM theoretically offers — could assimilate the end-to-end process.
+
+The challenges of implementing Total Total Management
+“Challenges vary depending on the ‘Total Talent Maturity’ of an organization but can include organizational siloes, limited communication between the HR and Procurement functions, lack of meaningful data and difficulties in building an effective business case. A pressing need to address skills shortages can act as the catalyst for TTM, with adoption more likely in organizations operating in industries that face these shortages such as pharmaceutical, healthcare and technology.”
+Jo Matkin, Global Workforce Solutions Research Director at Staffing Industry Analysts
+
+Total Talent Management is one of the key trends set to revolutionise the workforce solutions industry in the years to come, alongside workforce planning and employer branding. But there remains some potential challenges to implementing Total Talent Management. 
+
+As Jo Matkin points out, one of the biggest challenges is the siloed nature of HR and Procurement teams. This has long been an issue, not only in terms of making TTM a realistic undertaking but also for ensuring MSP, RPO and other outsourced solutions are a success.
+
+But as companies come to terms with the new normal, and as HR leaders and Procurement teams are brought together through better communication, integration and technology, TTM may well be a solution that really takes off in the 2020s — particularly in sectors affected by talent shortages. Given the organisational resourcing challenges facing businesses today, that is unlikely to be a bad thing.
+
+##
+Article 2:
+https://www.manpowergroup.co.uk/wp-content/uploads/2017/09/The-Journey-to-Total-Talent-Management.pdf (don't reference this directly in the copy! ManPower is a competitor - for inspo only)"""},
+    {"role":"assistant", "content":"""Imagine a theatre with a team of permanent staff. It needs a stage manager to get shows running - along with lighting and sound crew. Meanwhile, front-of-house employees are selling tickets and ice cream and getting the audience safely in and out. 
+ 
+Off site is the marketing team, working remotely on the website, social media and mailshots. There will be volunteers and interns, as well as trainees. 
+
+Then there are the acts - who arrive, set up, perform, pack up and depart across a period of days, weeks or even hours. They, along with road crew, are a crucial pipeline of talented freelancers. 
+
+The manager of this theatre would need multiple levels of skill and experience, as well as the capacity to pivot between deploying permanent staff and those in the gig economy. Their goal would be to bring a highly diverse, flexible and nimble workforce together under a single cohesive company culture and set of values.  
+
+It’s a very clear goal for a theatre – the shared objective of staging a fantastic and successful show – but more nebulous in other businesses. Unless you have a dynamic strategy. 
+
+Enter, stage left, Total Talent Management.  
+
+What is Total Talent Management? 
+
+The concept of Total Talent Management (TTM) is not new – but the sharpening need for it is. The pandemic and its aftermath have propelled the world of work into using every facet of recruitment to keep the wheels on and the wagon rolling.  
+
+In 2022 48% of HR respondents to a Mercer global talent trends survey listed a ‘variable staffing model’ as an effective tool to cut costs.  
+
+Harvard Business Review listed 9 workplace trends for 2023 and its no 1 prediction was ‘quiet hiring’. HBR goes on to define this as all of the above, adding a reward structure of bonuses and sweeteners to keep a keen stand-by crew forever in the wings, This is TTM.  
+
+How can companies implement TTM? 
+
+Like most things these days, TTM can be accompanied and supported with technology. In 2021, software packages for global talent management were valued at $7.09 billion - a figure projected to rise to $17.66 billion by 2029.  
+
+But more important than cutting-edge tech is a holistic approach to managing workers. A major selling point of TTM is that it allows companies to create comprehensive skills maps which facilitate upskilling and reskilling and promote internal career mobility. 
+
+For TTM to work holistically, long-established HR silos need to be demolished, redesigned and rebuilt. For decades there has been a separation between recruitment of permanent staff and procurement of temporary workers. It might be tidier for the accounts department, but the disconnect between these two approaches is, at best, unhelpful when it comes to running a flexible, slick and motivated workforce. 
+
+How can businesses benefit? 
+
+A cornerstone of TTM is valuing all workers for their contribution, be it permanent and office-based, part-time, remote, casual or a short-term fixed contract. Troubleshooting the inequities which surface between workers on site and workers out of sight will be essential in order to carefully offset the drawbacks with the perks.  
+
+Keeping everyone happy, from the intern to the long-term career employee, is the key challenge because the flexible workforce is looking like the future. In LHH’s Global Workforce of the Future report, 29% of workers would consider a pay cut to work fewer or more flexible hours, while 59% are shifting or have already shifted into more flexible roles. 
+
+And adaptability should be high on an employer’s wish list, too. In the first two months of 2023, despite a hiring boom in 2021 and 2022, Google, Amazon, Microsoft, Yahoo and Zoom between them laid off more than 121,000 employees. Sudden contractions of global markets and shockwaves in the banking world illustrate the need for firms to be deft and responsive in managing staff numbers. 
+
+So effective TTM means managing a tight core team of permanent workers and a fluctuating outer team of part-timers, contractors, freelancers - as well as engaging closely with a trusted recruitment agency as a backstop. 
+ 
+To return to the theatre analogy, if ticket sales are down one month and up the next, the hiring needs to flex - but in such a way that those key casual employees are still willing to show up when a sell-out show calls for a full crew. 
+
+TTM values go hand in hand with diversity, inclusion and sustainability, which, of course, should already be in place. The scenery will shift and the acts will come and go – but if every team member feels visible and connected, the show will go on. 
+
+Want to build great teams with diverse talent and create pathways for dynamic careers? Contact us to find out more about how LHH can support you in the planning and implementation of a meaningful total talent management strategy. """},
+    
+    {"role": "user", "content": """Can you write a 600-word article. \n Topic: Is this what a 30-year career could look like?  \n Brief: Focused Career Management for Lifetime Employability(
+• The value of Lifetime Employability (org & employee responsibility) including ROI
+• Engaging employees to actively pursue in career planning as a cultural norm
+• Guiding employees into actively pursuing new career paths
+
+
+Gen Zedders don't believe in a job for life any more - rather a series of shorter term commitments. The turbulence of their lifetimes has given them a temporary mindset.
+
+And the old carriage clock after 30 years at one firm is an antiquated notion in 2023.
+
+But maybe we need to reframe careers and see them as one long progression. Can employers hold on to good staff for life if they factor in life changes? 
+
+Imagine a 30 year plan...
+
+A graphic of what a satisfying 30 year career with one firm could look like, factoring in upskilling, training, maturity/paternity leave, a sabbatical year, time out to study, placements abroad, periods of part-time or job sharing and then empathetic outplacement in retirement years.
+
+Mobility and transition
+
+Portfolio career"""},
+    {"role":"assistant", "content":""" It’s 2023. Stop thinking in a line.  
+
+Two or three decades ago the straight-line career was normal. A graduate joining a firm could work their way up from newbie to supervisor to manager to director over two or three decades. Along the way there might be blips… like maternity leave or a short break for caring responsibilities, but other than this, it was a pretty straight company trajectory. 
+On a graph this might look like a long, gentle incline – somewhat lacking in dynamics. 
+A career timeline involving several different employers is likely to zig and zag much more energetically, representing the shifting gears and sporadic skillset growth of an employee who is building experience and know-how, knitting networks. Their experiences may be more varied, from different sectors, and they may have had time out for life experiences. 
+In fact, this isn’t a career timeline at all. It’s a career tapestry. Rich, textured, full of color. 
+Suppose you could offer all of that in one company? From newbie to director? You’d need to stop the linear thinking. Here are 5 ways to do it: 
+
+1. The long game 
+If it’s clear an employee is a keeper, ask what their plans are, not just for the next five years but for the next 20 or 30. If they’re willing to share their ambitions you can create a career mobility strategy that builds on achieving those ambitions. It may not be practical to plan exhaustively beyond the next 5 years, but indicating a wider horizon from the start can only help employees see a long-term future… with the same employer. 
+
+2. Every day’s a school day 
+Regular training modules to keep employees developing and engaged should be a given. However, a good assessment process will ensure you’re aware of burgeoning talents that your company could nurture, for roles which may be three or four years down the line. Sponsoring classes outside of work time is a way to signal trust and investment in an employee – with the promise of advancement built in. 
+
+3. The work-work balance 
+Reality check. An employee may like their job, but that doesn’t mean they don’t dream of something else… like running their own microbrewery, rewilding a river or making quilts. The chances of earning a stable living from passion projects are slim, though. Could your firm accommodate a second working life alongside a steady career? True, it may eat into available hours – but could give back exponentially in appreciation, motivation and productivity.  
+This isn’t just conjecture. From June to December 2022, UK firms ran the 100-80-100 pilot, allowing staff to take a day off their working week – and yet keep the same pay. 100% of pay for 80% of time, but 100% of commitment during that time. In March 2023 the World Economic Forum reported that the resultant gains in employee health, wellbeing, and productivity convinced 92% of employers to continue the pilot. What’s more, 30% of them have committed to the 4-day week permanently.  Some of those involved in this project will have spent their extra day on a passion project. Having a side hustle is common to 25% of working adults according to a recent UK study. Tellingly, it makes up around 20% of their income – ie: one working day a week. Supporting your worker’s passion projects could chalk up years of loyalty. 
+
+4. Set them free… for a bit 
+Everyone takes stock once in a while. Before a treasured colleague quits to find themselves in a Tibetan retreat, suggest a sabbatical. Six months away from work is not insurmountable – as maternity leave demonstrates. Employees may return with much more to offer. Smart employers know this. A World At Work survey in 2021 reported a rise in companies offering paid sabbaticals – from 8% to 10% over six years – in a bid to reduce burnout. Unpaid time off rose from 18% to 29% in the same period. 
+And if a change really is as good as a rest, employers with offices abroad could consider a secondment to a new location. Maybe even an employee exchange. 
+
+5. Let them go… in stages 
+Retirement dates have never been more moveable. Allowing workers to ease down gradually on their work commitments as they hit their early 60s means you’re likely to hang on to their expertise for many more years. 
+
+A survey by CNBC in 2022 showed 68% of US retirees were interested in getting back to work – and that flexibility was more appealing than salary. So, approach it pre-emptively, before your cherished veteran gets their farewell party: offer flexible and part-time terms into the years ahead. Even freelance consultancy. This could win you another decade of their valuable insights. 
+ """}
+    
+     
+
+]
