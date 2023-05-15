@@ -106,7 +106,7 @@ if check_password():
                 if len(articles) != 0:
                     for article in articles_list:
                         result  = get_article(article)
-                        article_string += f"Article %s: \n{result} \n\n ## \n\n" % (counter) 
+                        article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
                         counter += 1
                 end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
                 st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
@@ -157,7 +157,7 @@ if check_password():
                 if len(articles) != 0:
                     for article in articles_list:
                         result  = get_article(article)
-                        article_string += f"Article %s: \n{result} \n\n ## \n\n" % (counter) 
+                        article_string += f"Article {counter}: \n{result} \n\n ## \n\n" 
                         counter += 1
                         
                 end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
