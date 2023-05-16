@@ -105,7 +105,10 @@ if check_password():
                 counter = 1
                 if len(articles) != 0:
                     for article in articles_list:
-                        result  = get_article(article)
+                        try:
+                            result  = get_article(article)
+                        except:
+                            result = " "
                         article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
                         counter += 1
                 end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
@@ -137,9 +140,7 @@ if check_password():
         
 
     
-        
-   
-
+    
           
 
             
@@ -156,7 +157,10 @@ if check_password():
                 counter = 1
                 if len(articles) != 0:
                     for article in articles_list:
-                        result  = get_article(article)
+                        try:
+                            result  = get_article(article)
+                        except:
+                            result = " "
                         article_string += f"Article {counter}: \n{result} \n\n ## \n\n" 
                         counter += 1
                         
