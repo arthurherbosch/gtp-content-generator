@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 import streamlit as st
-from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE, LLH_ARTICLES
+from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE, LLH_ARTICLES,LLH_SCRIPT
 import oneai
 import requests
 #hide_menu_style = """
@@ -81,7 +81,7 @@ if check_password():
     video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
     
     if "script_messages"  not in st.session_state:
-        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+        st.session_state["script_messages"] = LLH_SCRIPT
     if "article_messages"  not in st.session_state:
         st.session_state["article_messages"] = LLH_ARTICLES
     end_prompt = " "
@@ -130,8 +130,8 @@ if check_password():
     
 
         if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = BASE_PROMPT_VIDEO[:11]
-        for i in range(len(st.session_state["script_messages"])-1, 10, -1):
+            st.session_state["script_messages"] = LLH_SCRIPT[:11]
+        for i in range(len(st.session_state["script_messages"])-1, 6, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
             if st.session_state["script_messages"][i]['role'] == 'assistant':
