@@ -130,8 +130,7 @@ if check_password():
     
 
         if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = LLH_SCRIPT[:5]
-            
+            st.session_state["script_messages"] = LLH_SCRIPT[:11]
         for i in range(len(st.session_state["script_messages"])-1, 6, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
