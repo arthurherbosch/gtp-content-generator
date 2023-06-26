@@ -3,4 +3,4 @@ streamlit==1.23.0
 streamlit-chat==0.0.2.2
 altair==4.0.0
 oneai==0.9.62
-requests==2.30.0
+requests==2.30.0e
