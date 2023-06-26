@@ -81,7 +81,7 @@ if check_password():
     video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
     
     if "script_messages"  not in st.session_state:
-        st.session_state["script_messages"] = LLH_SCRIPT
+        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
     if "article_messages"  not in st.session_state:
         st.session_state["article_messages"] = LLH_ARTICLES
     end_prompt = " "
@@ -130,7 +130,7 @@ if check_password():
     
 
         if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = LLH_SCRIPT[:5]
+            st.session_state["script_messages"] = BASE_PROMPT_VIDEO[:8]
         for i in range(len(st.session_state["script_messages"])-1, 6, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
