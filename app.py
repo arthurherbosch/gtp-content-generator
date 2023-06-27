@@ -146,7 +146,7 @@ def article_generator():
                         result = " "
                     article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
                     counter += 1             
-            create_script('article_messages', brief, words)
+            create_script('article_messages', brief, words, article_string)
             
     prompt = st.text_area("Make adjustments (After **Create Article** )", placeholder = "Can you make the article shorter?")
     change_script('article_messages',prompt)
