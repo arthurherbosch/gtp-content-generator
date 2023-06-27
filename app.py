@@ -86,7 +86,7 @@ def show_chat(type, length):
             
 def create_script(type, brief, len, article_string, video_type = None ):
     if type == 'script_messages':
-        end_prompt = f"Create a video script for a {len}-seconds {video_type}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+        end_prompt = f"Create a script for a {len}-seconds {video_type} video. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
     elif type == 'article_messages':
         end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
         
