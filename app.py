@@ -136,7 +136,7 @@ def video_script_generator():
                             result = " "
                         article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
                         counter += 1
-                end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+                end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
                 st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
                 response = openai_call(st.session_state["script_messages"])
                 message_response = response["choices"][0]["message"]["content"]
