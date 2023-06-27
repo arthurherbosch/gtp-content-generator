@@ -88,27 +88,27 @@ def create_script(type, brief, len, video_type = None ):
     articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
 
     if st.button("Create script", key ='send'):
-            with st.spinner("Let me do my thing..."):
-                articles_list = articles.split('\n')
-                article_string = ""
-                counter = 1
-                if len(articles) != 0:
-                    for article in articles_list:
-                        try:
-                            result  = get_article(article)
-                        except:
-                            result = " "
-                        article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
-                        counter += 1
-                if type == 'script_messages':
-                    end_prompt = f"Create a video script for a {len}-seconds {title}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
-                elif type == 'article_messages':
-                    end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
+        with st.spinner("Let me do my thing..."):
+            articles_list = articles.split('\n')
+            article_string = ""
+            counter = 1
+            if len(articles) != 0:
+                for article in articles_list:
+                    try:
+                        result  = get_article(article)
+                    except:
+                        result = " "
+                    article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
+                    counter += 1
+            if type == 'script_messages':
+                end_prompt = f"Create a video script for a {len}-seconds {title}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+            elif type == 'article_messages':
+                end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
 
-                st.session_state[type] += [{"role": "user", "content": end_prompt}]
-                response = openai_call(st.session_state[type])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state[type] += [{"role": "assistant", "content": message_response}]
+            st.session_state[type] += [{"role": "user", "content": end_prompt}]
+            response = openai_call(st.session_state[type])
+            message_response = response["choices"][0]["message"]["content"]
+            st.session_state[type] += [{"role": "assistant", "content": message_response}]
     
 def video_script_generator():
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
