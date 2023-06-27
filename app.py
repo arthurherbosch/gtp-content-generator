@@ -103,7 +103,6 @@ def video_script_generator():
         
         if st.button("Clear", key="clear"):
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-            st.write(st.session_state)
             
         if st.button("Change", key = 'change'):
             with st.spinner("Let me make some adjustments..."):
