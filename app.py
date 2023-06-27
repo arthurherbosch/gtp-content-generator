@@ -72,24 +72,6 @@ def get_article(article_url):
     data = r.json()
     return(data['input_text'])
 
-if check_password():
-    st.title("Content Engine Digital Writer V1")
-    type = st.radio(
-    "What do you want to create?",
-    ('Video Script', 'Article'))
-    
-    video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
-    
-    if "script_messages"  not in st.session_state:
-        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-    #if "article_messages"  not in st.session_state:
-    #   st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
-    end_prompt = " "
-
-    if type == 'Video Script':
-        video_script_generator()
-    
-   
 def video_script_generator():
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
@@ -144,6 +126,26 @@ def video_script_generator():
             if st.session_state["script_messages"][i]['role'] == 'assistant':
                 message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
                 
+                
+if check_password():
+    st.title("Content Engine Digital Writer V1")
+    type = st.radio(
+    "What do you want to create?",
+    ('Video Script', 'Article'))
+    
+    video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
+    
+    if "script_messages"  not in st.session_state:
+        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+    #if "article_messages"  not in st.session_state:
+    #   st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
+    end_prompt = " "
+
+    if type == 'Video Script':
+        video_script_generator()
+    
+   
+
     
 """" d     
     if type == "Article":
