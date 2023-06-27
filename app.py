@@ -84,82 +84,76 @@ def show_chat(type, length):
         if st.session_state[type][i]['role'] == 'assistant':
             message(st.session_state[type][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
             
-def create_script(type, brief, len, video_type = None ):
+def create_script(type, brief, len, article_string, video_type = None ):
+    if type == 'script_messages':
+        end_prompt = f"Create a video script for a {len}-seconds {video_type}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+    elif type == 'article_messages':
+        end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
+        
+    st.session_state[type] += [{"role": "user", "content": end_prompt}]
+    response = openai_call(st.session_state[type])
+    message_response = response["choices"][0]["message"]["content"]
+    st.session_state[type] += [{"role": "assistant", "content": message_response}]
+    
+def video_script_generator():
+    video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
+    st.write("Video has to be around ", video_len, 'seconds')
+    end_prompt = " "
+
+    type_vid = st.selectbox(
+    'What type of video?',
+    ('hype ', 'explainer', 'animation'))
+    brief = st.text_area("Brief", placeholder="A video on research, opportunities and challenges. There have been a number of stories around nuclear fusion lately, with more predicted in the future. This would be a 60-second explainer video that we could reuse every time a new story broke (US spelling). Most interesting thing about fusion is how big the potential is in terms of energy output and how benign the waste issue is. Focus on this element rather than explaining how nuclear fusion works. Also mention how it's moved from government-backed research into start-ups, the private sector is getting involved.", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
+    articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
+    
+    if st.button("Create script", key ='send'):
+        with st.spinner("Let me do my thing..."):
+            articles_list = articles.split('\n')
+            article_string = ""
+            counter = 1
+            if len(articles) != 0:
+                for article in articles_list:
+                    try:
+                        result  = get_article(article)
+                    except:
+                        result = " "
+                    article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
+                    counter += 1
+            create_script('script_messages', brief, video_len, article_string, video_type=type_vid)
+            
+    prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
+    change_script('script_messages',prompt)
+    if st.button("Clear", key="clear"):
+        st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+    show_chat('script_messages', len(BASE_PROMPT_VIDEO))
+        
+def article_generator():
+    words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
+    st.write("Article will be around ", words, 'words')
+    brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
     articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
 
     if st.button("Create script", key ='send'):
         with st.spinner("Let me do my thing..."):
-                articles_list = articles.split('\n')
-                article_string = ""
-                counter = 1
-                if len(articles) != 0:
-                    for article in articles_list:
-                        try:
-                            result  = get_article(article)
-                        except:
-                            result = " "
-                        article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
-                        counter += 1
-                        
-                if type == 'script_messages':
-                    end_prompt = f"Create a video script for a {len}-seconds {video_type}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
-                elif type == 'article_messages':
-                    end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
+            articles_list = articles.split('\n')
+            article_string = ""
+            counter = 1
+            if len(articles) != 0:
+                for article in articles_list:
+                    try:
+                        result  = get_article(article)
+                    except:
+                        result = " "
+                    article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
+                    counter += 1             
+            create_script('article_messages', brief, words)
+            
+    prompt = st.text_area("Make adjustments (After **Create Article** )", placeholder = "Can you make the article shorter?")
+    change_script('article_messages',prompt)
+    if st.button("Clear", key="clear"):
+        st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
+    show_chat('article_messages', len(BASE_PROMPT_ARTICLES))
 
-                st.session_state[type] += [{"role": "user", "content": end_prompt}]
-                response = openai_call(st.session_state[type])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state[type] += [{"role": "assistant", "content": message_response}]
-    
-def video_script_generator():
-        video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
-        st.write("Video has to be around ", video_len, 'seconds')
-        end_prompt = " "
-
-        type_vid = st.selectbox(
-        'What type of video?',
-        ('hype ', 'explainer', 'animation'))
-        brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
-        
-        articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
-        
-        if st.button("Create script", key ='send'):
-            with st.spinner("Let me do my thing..."):
-                articles_list = articles.split('\n')
-                article_string = ""
-                counter = 1
-                if len(articles) != 0:
-                    for article in articles_list:
-                        try:
-                            result  = get_article(article)
-                        except:
-                            result = " "
-                        article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
-                        counter += 1
-                end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
-                st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
-                response = openai_call(st.session_state["script_messages"])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
-        prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
-        change_script('script_messages',prompt)
-        if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-        show_chat('script_messages', len(BASE_PROMPT_VIDEO))
-        
-def article_generator():
-    if type == "Article":
-        words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
-        st.write("Article will be around ", words, 'words')
-        brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
-
-        create_script('article_messages', brief, words)
-        prompt = st.text_area("Make adjustments (After **Create Article** )", placeholder = "Can you make the article shorter?")
-        change_script('article_messages',prompt)
-        if st.button("Clear", key="clear"):
-            st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
-        show_chat('article_messages', len(BASE_PROMPT_ARTICLES))
-  
 if check_password():
     st.title("Content Engine Digital Writer V1")
     type = st.radio(
