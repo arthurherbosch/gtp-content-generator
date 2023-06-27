@@ -121,7 +121,26 @@ def video_script_generator():
         ('hype ', 'explainer', 'animation'))
         brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
         
-        create_script('script_messages', brief, video_len, video_type= type_vid)
+        articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
+        
+        if st.button("Create script", key ='send'):
+            with st.spinner("Let me do my thing..."):
+                articles_list = articles.split('\n')
+                article_string = ""
+                counter = 1
+                if len(articles) != 0:
+                    for article in articles_list:
+                        try:
+                            result  = get_article(article)
+                        except:
+                            result = " "
+                        article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
+                        counter += 1
+                end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+                st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
+                response = openai_call(st.session_state["script_messages"])
+                message_response = response["choices"][0]["message"]["content"]
+                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
         prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
         change_script('script_messages',prompt)
         if st.button("Clear", key="clear"):
