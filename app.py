@@ -69,6 +69,20 @@ def get_article(article_url):
     data = r.json()
     return(data['input_text'])
 
+def change_script(type, prompt):
+    if st.button("Change", key = 'change'):
+            with st.spinner("Let me make some adjustments..."):
+                st.session_state[type] += [{"role": "user", "content": prompt}]
+                response = openai_call(st.session_state[type])
+                message_response = response["choices"][0]["message"]["content"]
+                st.session_state[type] += [{"role": "assistant", "content": message_response}]
+def show_chat(type, length):      
+    for i in range(len(st.session_state[type])-1, length, -1):
+        if st.session_state[type][i]['role'] == 'user':
+            message(st.session_state[type][i]['content'], is_user=True)
+        if st.session_state[type][i]['role'] == 'assistant':
+            message(st.session_state[type][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
+            
 def video_script_generator():
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
@@ -101,22 +115,14 @@ def video_script_generator():
     
         prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
         
+        change_script('script_messages',prompt)
+        
         if st.button("Clear", key="clear"):
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-            
-        if st.button("Change", key = 'change'):
-            with st.spinner("Let me make some adjustments..."):
-                st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
-                response = openai_call(st.session_state["script_messages"])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
-                    
-        for i in range(len(st.session_state["script_messages"])-1, 10, -1):
-            if st.session_state["script_messages"][i]['role'] == 'user':
-                message(st.session_state["script_messages"][i]['content'], is_user=True)
-            if st.session_state["script_messages"][i]['role'] == 'assistant':
-                message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-                   
+        st.write(len(BASE_PROMPT_VIDEO))
+        
+        show_chat('script_messages', len(BASE_PROMPT_VIDEO))
+        
 def article_generator():
     if type == "Article":
         words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
@@ -147,13 +153,8 @@ def article_generator():
         
         prompt = st.text_area("Make adjustments (After **Create Article** )", placeholder = "Can you make the article shorter?")
         
-        if st.button("Change", key = 'change'):
-            with st.spinner("Let me make some adjustments..."):
-                st.session_state["article_messages"] += [{"role": "user", "content": prompt}]
-                response = openai_call(st.session_state["article_messages"])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
-        
+        change_script('article_messages',prompt)
+
         if st.button("Clear", key="clear"):
             st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
             
