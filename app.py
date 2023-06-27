@@ -73,6 +73,7 @@ def get_article(article_url):
     return(data['input_text'])
 
 def video_script_generator():
+        
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
     
@@ -100,12 +101,12 @@ def video_script_generator():
                 response = openai_call(st.session_state["script_messages"])
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
-            
+                st.write(BASE_PROMPT_VIDEO)
+
     
         prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
         
         if st.button("Clear", key="clear"):
-            st.write(BASE_PROMPT_VIDEO)
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
             
             
@@ -115,11 +116,7 @@ def video_script_generator():
                 response = openai_call(st.session_state["script_messages"])
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
-        
-    
-
-        
-            
+                    
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
@@ -132,7 +129,8 @@ if check_password():
     type = st.radio(
     "What do you want to create?",
     ('Video Script', 'Article'))
-    
+    st.write(BASE_PROMPT_VIDEO)
+
     video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
     
     if "script_messages"  not in st.session_state:
