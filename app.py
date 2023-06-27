@@ -76,25 +76,16 @@ def change_script(type, prompt):
                 response = openai_call(st.session_state[type])
                 message_response = response["choices"][0]["message"]["content"]
                 st.session_state[type] += [{"role": "assistant", "content": message_response}]
+                
 def show_chat(type, length):      
-    for i in range(len(st.session_state[type])-1, length, -1):
+    for i in range(len(st.session_state[type])-1, length - 1, -1):
         if st.session_state[type][i]['role'] == 'user':
             message(st.session_state[type][i]['content'], is_user=True)
         if st.session_state[type][i]['role'] == 'assistant':
             message(st.session_state[type][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
             
-def video_script_generator():
-        video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
-        st.write("Video has to be around ", video_len, 'seconds')
-        end_prompt = " "
-
-        type_vid = st.selectbox(
-        'What type of video?',
-        ('hype ', 'explainer', 'animation'))
-        brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
-        articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
-        
-        if st.button("Create script", key ='send'):
+def create_script(type, articles,brief, len, video_type = None ):
+    if st.button("Create script", key ='send'):
             with st.spinner("Let me do my thing..."):
                 articles_list = articles.split('\n')
                 article_string = ""
@@ -107,20 +98,32 @@ def video_script_generator():
                             result = " "
                         article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
                         counter += 1
-                end_prompt = f"Create a video script for a {video_len}-seconds {type_vid}. \n \nTopic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
-                st.session_state["script_messages"] += [{"role": "user", "content": end_prompt}]
-                response = openai_call(st.session_state["script_messages"])
+                if type == 'script_messages':
+                    end_prompt = f"Create a video script for a {len}-seconds {title}. \n \nTopic: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+                elif type == 'article_messages':
+                    end_prompt =f"Create a {len}-word article. \n\n Topic: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
+
+                st.session_state[type] += [{"role": "user", "content": end_prompt}]
+                response = openai_call(st.session_state[type])
                 message_response = response["choices"][0]["message"]["content"]
-                st.session_state["script_messages"] += [{"role": "assistant", "content": message_response}]
+                st.session_state[type] += [{"role": "assistant", "content": message_response}]
     
+def video_script_generator():
+        video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
+        st.write("Video has to be around ", video_len, 'seconds')
+        end_prompt = " "
+
+        type_vid = st.selectbox(
+        'What type of video?',
+        ('hype ', 'explainer', 'animation'))
+        brief = st.text_area("Brief", placeholder="A video on a trend that's cropping up on the newswires - matching training to the time of your cycle. \n The US women’s soccer team coach partly attributes their 2019 World Cup win to cycle synching, and UK club Chelsea (which has Matildas skipper Sam Kerr on the team) tailor all their training to the players’ periods.  \n Content to mention that you don't have to be an athlete to benefit from cycle synching ", help="Make sure to provide a detailed brief that includes all the information needed to create a quality scripts. You can put in articles for reference or put in sources. Tell the script what the focus should be, this will create better results. **The better the brief, the better the script**")
+        articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
+        
+        create_script('script_messages', articles, brief, video_len, video_type= type_vid)
         prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
-        
         change_script('script_messages',prompt)
-        
         if st.button("Clear", key="clear"):
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-        st.write(len(BASE_PROMPT_VIDEO))
-        
         show_chat('script_messages', len(BASE_PROMPT_VIDEO))
         
 def article_generator():
@@ -130,47 +133,20 @@ def article_generator():
         brief = st.text_area("Brief", placeholder="Write an article about nuclear fusion.")
         articles = st.text_area("Sources", placeholder="Link articles here. Put a link on every new line. \n\n https://www.example.com/ \n https://www.example.com/ ")
 
-        if st.button("Create", key ='send'):
-            with st.spinner("Let me do my thing..."):
-                articles_list = articles.split('\n')
-                article_string = ""
-                counter = 1
-                if len(articles) != 0:
-                    for article in articles_list:
-                        try:
-                            result  = get_article(article)
-                        except:
-                            result = " "
-                        article_string += f"Article {counter}: \n{result} \n\n ## \n\n" 
-                        counter += 1
-                        
-                end_prompt =f"Create a {words}-word article. \n\n Topic: {video_title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
-
-                st.session_state["article_messages"] += [{"role": "user", "content": end_prompt}]
-                response = openai_call(st.session_state["article_messages"])
-                message_response = response["choices"][0]["message"]["content"]
-                st.session_state["article_messages"] += [{"role": "assistant", "content": message_response}]
-        
+        create_script('article_messages', articles, brief, words)
         prompt = st.text_area("Make adjustments (After **Create Article** )", placeholder = "Can you make the article shorter?")
-        
         change_script('article_messages',prompt)
-
         if st.button("Clear", key="clear"):
             st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
-            
-        for i in range(len(st.session_state["article_messages"])-1, 8, -1):
-            if st.session_state["article_messages"][i]['role'] == 'user':
-                message(st.session_state["article_messages"][i]['content'], is_user=True)
-            if st.session_state["article_messages"][i]['role'] == 'assistant':
-                message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-              
+        show_chat('article_messages', len(BASE_PROMPT_ARTICLES))
+  
 if check_password():
     st.title("Content Engine Digital Writer V1")
     type = st.radio(
     "What do you want to create?",
     ('Video Script', 'Article'))
 
-    video_title = st.text_input("Video Title", placeholder="What is cycle synching?")
+    title = st.text_input("Video Title", placeholder="What is cycle synching?")
     
     BASE_PROMPT_VIDEO = [ 
     {"role": "system", "content": "Intelligent writer that writes video scripts based of a brief for short videos in a certain style"},
