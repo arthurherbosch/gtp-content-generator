@@ -86,6 +86,7 @@ if check_password():
         st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
     end_prompt = " "
 
+    st.write(st.session_state)
    
     if type == 'Video Script':
         
@@ -131,6 +132,7 @@ if check_password():
 
         if st.button("Clear", key="clear"):
             st.session_state["script_messages"] = BASE_PROMPT_VIDEO[:11]
+            
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
                 message(st.session_state["script_messages"][i]['content'], is_user=True)
