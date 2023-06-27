@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 import streamlit as st
-from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO, HOLCIM_VIDEO, ADECCO_ARTICLE, LLH_ARTICLES,LLH_SCRIPT
+from _config import BASE_PROMPT_ARTICLES, BASE_PROMPT_VIDEO
 import oneai
 import requests
 #hide_menu_style = """
@@ -82,14 +82,15 @@ if check_password():
     
     if "script_messages"  not in st.session_state:
         st.session_state["script_messages"] = BASE_PROMPT_VIDEO
-    if "article_messages"  not in st.session_state:
-        st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
+    #if "article_messages"  not in st.session_state:
+    #   st.session_state["article_messages"] = BASE_PROMPT_ARTICLES
     end_prompt = " "
 
-    st.write(st.session_state)
-   
     if type == 'Video Script':
-        
+        video_script_generator()
+    
+   
+def video_script_generator():
         video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
         st.write("Video has to be around ", video_len, 'seconds')
     
@@ -121,6 +122,11 @@ if check_password():
     
         prompt = st.text_area("Make adjustments (After **Create Script** )", placeholder = "Can you make the script shorter?", help='You can ask the writer to make some adjustments to the created script. Just write down the things you want to change and press **change**.')
         
+        if st.button("Clear", key="clear"):
+            st.write(BASE_PROMPT_VIDEO)
+            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+            
+            
         if st.button("Change", key = 'change'):
             with st.spinner("Let me make some adjustments..."):
                 st.session_state["script_messages"] += [{"role": "user", "content": prompt}]
@@ -130,8 +136,7 @@ if check_password():
         
     
 
-        if st.button("Clear", key="clear"):
-            st.session_state["script_messages"] = BASE_PROMPT_VIDEO
+        
             
         for i in range(len(st.session_state["script_messages"])-1, 10, -1):
             if st.session_state["script_messages"][i]['role'] == 'user':
@@ -139,13 +144,8 @@ if check_password():
             if st.session_state["script_messages"][i]['role'] == 'assistant':
                 message(st.session_state["script_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
                 
-        
-
     
-    
-          
-
-            
+"""" d     
     if type == "Article":
         words = st.slider('Around how many words do you want in the article? ', 0, 1000, 600, step = 50)
         st.write("Article will be around ", words, 'words')
@@ -192,3 +192,4 @@ if check_password():
             if st.session_state["article_messages"][i]['role'] == 'assistant':
                 message(st.session_state["article_messages"][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
         
+    """
