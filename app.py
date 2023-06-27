@@ -100,8 +100,9 @@ def create_script(type, brief, len, video_type = None ):
                         result = " "
                     article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
                     counter += 1
+                    
             if type == 'script_messages':
-                end_prompt = f"Create a video script for a {len}-seconds {title}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+                end_prompt = f"Create a video script for a {len}-seconds {video_type}. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
             elif type == 'article_messages':
                 end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
 
