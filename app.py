@@ -51,22 +51,8 @@ def check_password():
         return True
         
 def get_article(article_url):
-    url = "https://api.oneai.com/api/v0/pipeline"
-    headers = {
-        "api-key" : "a97ed467-e7f9-4662-8ba9-63b6cd8f3bcb",
-        "content-type" : "application/json"
-    }
-
-    payload = {
-        "input" : article_url,
-        "input_type" : "article",
-        "steps": [
-            {
-                "skill": "html-extract-article"
-            }
-        ],
-    }
-    article = newspaper.Article(url=url, language='en')
+    
+    article = newspaper.Article(url=article_url, language='en')
     article.download()
     article.parse()
     article ={
