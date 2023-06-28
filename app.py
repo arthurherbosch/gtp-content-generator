@@ -84,7 +84,10 @@ def create_script(type, brief, len, article_string, video_type = None ):
     
     encoding = tiktoken.encoding_for_model("gpt-4")
     #num_tokens = len(encoding.encode("whats upp, with this"))
-    st.warning(encoding.encode("whats upp, with this"))
+    encodings = encoding.encode("whats upp, with this")
+    st.warning(len(encodings))
+
+
     
     if(num_tokens < 8192):
         st.session_state[type] += [{"role": "user", "content": end_prompt}]
