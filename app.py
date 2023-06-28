@@ -85,7 +85,7 @@ def create_script(type, brief, len, article_string, video_type = None ):
     encoding = tiktoken.encoding_for_model("gpt-4")
     #num_tokens = len(encoding.encode("whats upp, with this"))
     encodings = encoding.encode("whats upp, with this")
-    st.warning(len(encodings))
+    st.warning(list(encodings))
 
 
     
