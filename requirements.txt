@@ -1,7 +1,8 @@
 openai==0.27.0
 streamlit==1.23.0
 streamlit-chat==0.0.2.2
+newspaper3k==0.2.8
 altair==4.0.0
 oneai==0.9.62
 requests==2.30.0
-newspaper3k==0.2.8
+beautifulsoup4==4.10.0
