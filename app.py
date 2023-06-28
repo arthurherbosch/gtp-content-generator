@@ -84,7 +84,7 @@ def create_script(type, brief, length, article_string, video_type = None ):
     
     encodings = tiktoken.encoding_for_model("gpt-4")
     num_tokens = len(encodings.encode('whats upp, with this'))
-    
+    st.warning(num_tokens)
     if(num_tokens < 8192):
         st.session_state[type] += [{"role": "user", "content": end_prompt}]
         response = openai_call(st.session_state[type])
