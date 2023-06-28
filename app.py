@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 import streamlit as st
-from newspaper import Article
+import newspaper
 
 #hide_menu_style = """
 #        <style>
