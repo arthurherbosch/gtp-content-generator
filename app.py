@@ -90,7 +90,7 @@ def create_script(type, brief, length, article_string, video_type = None ):
         message_response = response["choices"][0]["message"]["content"]
         st.session_state[type] += [{"role": "assistant", "content": message_response}]
     else:
-        st.warning(f'Prompt is to long.  Current lenght {num_tokens} (max. 8192). Delete a source or shorten the brief.', icon="⚠️")
+        st.warning(f'Prompt is too long.  Current lenght {num_tokens} (max. 8192). Delete a source or shorten the brief.', icon="⚠️")
     
 def video_script_generator():
     video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
