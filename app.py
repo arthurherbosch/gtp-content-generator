@@ -106,8 +106,8 @@ def video_script_generator():
                 for article in articles_list:
                     try:
                         result  = get_article(article)
-                    except:
-                        result = " "
+                    except Exception as e:
+                        result = e
                     article_string += f"Article  {counter}: \n{result} \n\n ## \n\n" 
                     counter += 1
             create_script('script_messages', brief, video_len, article_string, video_type=type_vid)
