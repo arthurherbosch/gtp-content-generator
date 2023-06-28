@@ -84,7 +84,8 @@ def create_script(type, brief, len, article_string, video_type = None ):
     
     encodings = tiktoken.encoding_for_model("gpt-4")
     tokensss = encodings.encode('whats upp, with this')
-    st.warning(list(tokensss))
+    list_tokens = list(tokensss)
+    st.warning(len(list_tokens),  icon="⚠️")
 
     
     if(tokensss < 8192):
