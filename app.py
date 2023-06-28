@@ -4,6 +4,7 @@ import openai
 import streamlit as st
 import oneai
 import requests
+from newspaper import Article
 #hide_menu_style = """
 #        <style>
 #        #MainMenu {visibility: hidden;}
@@ -65,9 +66,15 @@ def get_article(article_url):
             }
         ],
     }
-    r = requests.post(url, json=payload, headers=headers)
-    data = r.json()
-    return(data['input_text'])
+    article = newspaper.Article(url=url, language='en')
+    article.download()
+    article.parse()
+    article ={
+    "title": str(article.title),
+    "text": str(article.text),
+    }
+
+    return(article['text'])
 
 def change_script(type, prompt):
     if st.button("Change", key = 'change'):
