@@ -82,7 +82,6 @@ def create_script(type, brief, len, article_string, video_type = None ):
     elif type == 'article_messages':
         end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
     
-    del len
 
     encodings = tiktoken.encoding_for_model("gpt-4")
     tokensss = encodings.encode('whats upp, with this')
