@@ -83,8 +83,7 @@ def create_script(type, brief, length, article_string, video_type = None ):
         end_prompt =f"Create a {length}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
     
     encodings = tiktoken.encoding_for_model("gpt-4")
-    num_tokens = len(encodings.encode('whats upp, with this'))
-    st.warning(num_tokens)
+    num_tokens = len(encodings.encode(end_prompt))
     if(num_tokens < 8192):
         st.session_state[type] += [{"role": "user", "content": end_prompt}]
         response = openai_call(st.session_state[type])
