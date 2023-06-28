@@ -76,26 +76,22 @@ def show_chat(type, length):
        
  
      
-def create_script(type, brief, len, article_string, video_type = None ):
+def create_script(type, brief, length, article_string, video_type = None ):
     if type == 'script_messages':
-        end_prompt = f"Create a script for a {len}-seconds {video_type} video. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
+        end_prompt = f"Create a script for a {length}-seconds {video_type} video. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
     elif type == 'article_messages':
-        end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
+        end_prompt =f"Create a {length}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
     
-
     encodings = tiktoken.encoding_for_model("gpt-4")
-    tokensss = encodings.encode('whats upp, with this')
-    list_tokens = list(tokensss)
-    st.warning(len(list_tokens),  icon="⚠️")
-
+    num_tokens = len(encodings.encode('whats upp, with this'))
     
-    if(tokensss < 8192):
+    if(num_tokens < 8192):
         st.session_state[type] += [{"role": "user", "content": end_prompt}]
         response = openai_call(st.session_state[type])
         message_response = response["choices"][0]["message"]["content"]
         st.session_state[type] += [{"role": "assistant", "content": message_response}]
     else:
-        st.warning(f'Prompt is to long.  Current lenght {tokensss} (max. 8192). Delete a source or shorten the brief.', icon="⚠️")
+        st.warning(f'Prompt is to long.  Current lenght {num_tokens} (max. 8192). Delete a source or shorten the brief.', icon="⚠️")
     
 def video_script_generator():
     video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
