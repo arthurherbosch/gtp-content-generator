@@ -2,9 +2,8 @@ import streamlit as st
 from streamlit_chat import message
 import openai
 import streamlit as st
-import oneai
-import requests
 from newspaper import Article
+
 #hide_menu_style = """
 #        <style>
 #        #MainMenu {visibility: hidden;}
@@ -51,7 +50,6 @@ def check_password():
         return True
         
 def get_article(article_url):
-    
     article = newspaper.Article(url=article_url, language='en')
     article.download()
     article.parse()
@@ -60,7 +58,7 @@ def get_article(article_url):
     "text": str(article.text),
     }
 
-    return(article['text'])
+    return(article_url)
 
 def change_script(type, prompt):
     if st.button("Change", key = 'change'):
