@@ -54,11 +54,10 @@ def get_article(article_url):
     article.download()
     article.parse()
     article ={
-    "title": str(article.title),
     "text": str(article.text),
     }
 
-    return(article_url)
+    return(article['text'])
 
 def change_script(type, prompt):
     if st.button("Change", key = 'change'):
