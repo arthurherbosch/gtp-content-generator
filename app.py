@@ -3,7 +3,7 @@ from streamlit_chat import message
 import openai
 import streamlit as st
 import newspaper
-
+import tiktoken
 #hide_menu_style = """
 #        <style>
 #        #MainMenu {visibility: hidden;}
@@ -73,17 +73,26 @@ def show_chat(type, length):
             message(st.session_state[type][i]['content'], is_user=True)
         if st.session_state[type][i]['role'] == 'assistant':
             message(st.session_state[type][i]['content'], avatar_style="bottts-neutral", seed='Aneka')
-            
+       
+ 
+     
 def create_script(type, brief, len, article_string, video_type = None ):
     if type == 'script_messages':
         end_prompt = f"Create a script for a {len}-seconds {video_type} video. \n \Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string} "
     elif type == 'article_messages':
         end_prompt =f"Create a {len}-word article. \n\n Title: {title} \n\n Brief: {brief} \n\n\n You can use these articles/texts:\n{article_string}" 
-        
-    st.session_state[type] += [{"role": "user", "content": end_prompt}]
-    response = openai_call(st.session_state[type])
-    message_response = response["choices"][0]["message"]["content"]
-    st.session_state[type] += [{"role": "assistant", "content": message_response}]
+    
+    encoding = tiktoken.encoding_for_model("gpt-4")
+
+    num_tokens = len(encoding.encode(end_prompt))
+
+    if(num_tokens < 8192):
+        st.session_state[type] += [{"role": "user", "content": end_prompt}]
+        response = openai_call(st.session_state[type])
+        message_response = response["choices"][0]["message"]["content"]
+        st.session_state[type] += [{"role": "assistant", "content": message_response}]
+    else:
+        st.warning(f'Prompt is to long.  Current lenght {num_tokens} (max. 8192). Delete a source or shorten the brief.', icon="⚠️")
     
 def video_script_generator():
     video_len = st.slider('How long should the video be?', 0, 180, 60, step = 15)
